@@ -3,6 +3,7 @@ import HiScoresList from '../components/HiScoresList';
 import Login from '../components/Login';
 import SessionInfo from '../components/SessionInfo';
 import BottleContainer from './BottleContainer';
+import DrCat from '../components/DrCat';
 import URLS from '../urls';
 
 class GameContainer extends React.Component {
@@ -84,7 +85,7 @@ class GameContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <HiScoresList users={this.state.users} />
         <Login
           loggedIn={this.state.loggedIn}
@@ -93,6 +94,7 @@ class GameContainer extends React.Component {
           setCurrentUser={this.setCurrentUser}
           setDefaultUser={this.setDefaultUser}
         />
+        <DrCat />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
         <BottleContainer startGame={this.startGame} />
       </div>

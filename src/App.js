@@ -4,7 +4,7 @@ import GameContainer from './containers/GameContainer';
 
 class App extends Component {
   render() {
-    return <GameContainer userName="container" />;
+    return <GameContainer />;
   }
 }
 
