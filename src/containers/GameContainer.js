@@ -78,10 +78,13 @@ class GameContainer extends React.Component {
     });
   };
 
+  startGame = () => {
+    console.log('STARRRRRTTT!!!!');
+  };
+
   render() {
     return (
       <div>
-        Game Container
         <HiScoresList users={this.state.users} />
         <Login
           loggedIn={this.state.loggedIn}
@@ -91,7 +94,7 @@ class GameContainer extends React.Component {
           setDefaultUser={this.setDefaultUser}
         />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
-        <BottleContainer />
+        <BottleContainer startGame={this.startGame} />
       </div>
     );
   }

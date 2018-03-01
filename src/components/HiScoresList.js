@@ -16,15 +16,18 @@ const HiScoresList = props => {
     return sortedUsers.slice(0, 10); //returns sorted array
   };
   return (
-    <ol>
-      {hiScores().map((
-        user //map and return user scores
-      ) => (
-        <li key={user.id}>
-          {user.name}: {user.hiScore}
-        </li>
-      ))}
-    </ol>
+    <div className="hiscores-panel">
+      <h2>High Scores</h2>
+      <ol>
+        {hiScores().map((
+          user //map and return user scores
+        ) => (
+          <li key={user.id}>
+            {user.name}: {user.hiScore}
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 };
 

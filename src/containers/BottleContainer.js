@@ -2,7 +2,14 @@ import React from 'react';
 
 class BottleContainer extends React.Component {
   render() {
-    return <div>Bottle</div>;
+    return (
+      <div>
+        <div className="bottle" />
+        <button type="button" onClick={this.props.startGame}>
+          START
+        </button>
+      </div>
+    );
   }
 }
 
