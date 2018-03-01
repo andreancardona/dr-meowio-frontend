@@ -51,7 +51,9 @@ class GameContainer extends React.Component {
     });
     console.log('defaultUser', defaultUser);
     this.setState({
-      currentUser: defaultUser
+      currentUser: defaultUser,
+      loggedIn: false,
+      inputValue: ''
     });
   };
 
@@ -62,6 +64,11 @@ class GameContainer extends React.Component {
     this.setState({
       currentUser: currentUser
     });
+    this.setLoggedIn();
+  };
+
+  setLoggedIn = () => {
+    this.setState({ loggedIn: !this.state.loggedIn });
   };
 
   setInputValue = event => {
@@ -77,9 +84,11 @@ class GameContainer extends React.Component {
         Game Container
         <HiScoresList users={this.state.users} />
         <Login
+          loggedIn={this.state.loggedIn}
           inputValue={this.state.inputValue}
           setInputValue={this.setInputValue}
           setCurrentUser={this.setCurrentUser}
+          setDefaultUser={this.setDefaultUser}
         />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
         <BottleContainer />
