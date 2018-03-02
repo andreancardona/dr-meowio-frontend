@@ -24,7 +24,7 @@ body {
   border-color: black;
   border-style: solid;
   border-width: thick;
-  width: 300px;
+  width: 250px;
   height: 500px;
 }
 
@@ -68,4 +68,935 @@ body {
   border-style: solid;
   border-width: thin;
   padding: 5%;
+}
+
+.pill-left {
+  background-color: red;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+
+.pill-right {
+  background-color: blue;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+
+.pillgrid {
+  display: grid;
+  grid-template-columns: [gone] 12.5% [gtwo] 12.5% [gthree] 12.5% [gfour] 12.5% [gfive] 12.5% [gsix] 12.5% [gseven] 12.5% [geight] 12.5% [end];
+  grid-template-rows: [ga] 6.25% [gb] 6.25% [gc] 6.25% [gd] 6.25% [ge] 6.25% [gf] 6.25% [gg] 6.25% [gh] 6.25% [gi] 6.25% [gj] 6.25% [gk] 6.25% [gl] 6.25% [gm] 6.25% [gn] 6.25% [go] 6.25% [gp] 6.25% [end];
+  width: 250px;
+  height: 500px;
+}
+
+/*///// PILL POSITION CLASSES ///// */
+/* col 1 */
+.a1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p1 {
+  grid-column-start: gone;
+  grid-column-end: gtwo;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/* col 2 */
+.a2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p2 {
+  grid-column-start: gtwo;
+  grid-column-end: gthree;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col  3 */
+
+.a3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p3 {
+  grid-column-start: gthree;
+  grid-column-end: gfour;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col 4 */
+
+.a4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p4 {
+  grid-column-start: gfour;
+  grid-column-end: gfive;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col 5 */
+
+.a5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p5 {
+  grid-column-start: gfive;
+  grid-column-end: gsix;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col 6 */
+
+.a6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p6 {
+  grid-column-start: gsix;
+  grid-column-end: gseven;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col 7 */
+
+.a7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p7 {
+  grid-column-start: gseven;
+  grid-column-end: geight;
+  grid-row-start: gp;
+  grid-row-end: end;
+}
+
+/*col 8 */
+
+.a8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: ga;
+  grid-row-end: gb;
+}
+
+.b8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gb;
+  grid-row-end: gc;
+}
+
+.c8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gc;
+  grid-row-end: gd;
+}
+
+.d8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gd;
+  grid-row-end: ge;
+}
+
+.e8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: ge;
+  grid-row-end: gf;
+}
+
+.f8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gf;
+  grid-row-end: gg;
+}
+
+.g8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gg;
+  grid-row-end: gh;
+}
+
+.h8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gh;
+  grid-row-end: gi;
+}
+
+.i8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gi;
+  grid-row-end: gj;
+}
+
+.j8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gj;
+  grid-row-end: gk;
+}
+
+.k8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gk;
+  grid-row-end: gl;
+}
+
+.l8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gl;
+  grid-row-end: gm;
+}
+
+.m8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gm;
+  grid-row-end: gn;
+}
+
+.n8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gn;
+  grid-row-end: go;
+}
+
+.o8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: go;
+  grid-row-end: gp;
+}
+
+.p8 {
+  grid-column-start: geight;
+  grid-column-end: end;
+  grid-row-start: gp;
+  grid-row-end: end;
 }

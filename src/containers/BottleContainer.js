@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Bottle from './Bottle.js';
+
 class BottleContainer extends React.Component {
   render() {
     return (
       <div className="bottle-panel">
-        <div className="bottle" />
+        <Bottle />
         <button type="button" onClick={this.props.startGame}>
           START
         </button>
