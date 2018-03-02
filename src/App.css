@@ -75,19 +75,31 @@ body {
   /* width: 32.5px;
   height: 32.5px; */
 }
+.colorOne:focus {
+  outline: none;
+}
 
 .colorTwo {
   background-color: blue;
   /* width: 32.5px;
   height: 32.5px; */
 }
+.colorTwo:focus {
+  outline: none;
+}
 
 .colorThree {
   background-color: yellow;
 }
+.colorThree:focus {
+  outline: none;
+}
 
 .colorFour {
   background-color: green;
+}
+.colorFour:focus {
+  outline: none;
 }
 
 .pillgrid {

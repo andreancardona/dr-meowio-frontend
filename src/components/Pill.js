@@ -6,29 +6,77 @@ class Pill extends React.Component {
     position: 'a4'
   };
 
+  handleKeyPress = key => {
+    if (key === 'ArrowRight') {
+      this.moveRight();
+    } else if (key === 'ArrowLeft') {
+      this.moveLeft();
+    } else if (key === 'ArrowDown') {
+      this.moveDown();
+    }
+  };
+
   componentDidMount() {
     this.setState({
       color: this.props.color,
       position: this.props.pillPosition
     });
+    this.pill.focus();
     setInterval(this.moveDown, 1000);
   }
 
+  moveLeft = () => {
+    const positionArray = this.state.position.split('');
+    if (positionArray[1] !== '1' && positionArray[0] !== 'p') {
+      const prevCol = String.fromCharCode(positionArray[1].charCodeAt(0) - 1);
+      positionArray.pop();
+      positionArray.push(prevCol);
+      const newPosition = positionArray.join('');
+      this.setState({
+        position: newPosition
+      });
+    }
+  };
+
+  moveRight = () => {
+    const positionArray = this.state.position.split('');
+    if (positionArray[1] !== '8' && positionArray[0] !== 'p') {
+      const nextCol = String.fromCharCode(positionArray[1].charCodeAt(0) + 1);
+      positionArray.pop();
+      positionArray.push(nextCol);
+      const newPosition = positionArray.join('');
+      this.setState({
+        position: newPosition
+      });
+    }
+  };
+
   moveDown = () => {
     const positionArray = this.state.position.split('');
-    const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
-    positionArray.shift();
-    positionArray.unshift(nextRow);
-    const newPosition = positionArray.join('');
-    this.setState(
-      {
+    if (positionArray[0] !== 'p') {
+      const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
+      positionArray.shift();
+      positionArray.unshift(nextRow);
+      const newPosition = positionArray.join('');
+      this.setState({
         position: newPosition
-      },
-      () => console.log(this.state.position)
-    );
+      });
+    } else if (positionArray[0] === 'p') {
+      this.props.toggleActive();
+    }
   };
+
   render() {
-    return <div className={`${this.state.color} ${this.state.position}`} />;
+    return (
+      <div
+        ref={div => {
+          this.pill = div;
+        }}
+        onKeyDown={event => this.handleKeyPress(event.key)}
+        className={`${this.state.color} ${this.state.position}`}
+        tabIndex="0"
+      />
+    );
   }
 }
 
