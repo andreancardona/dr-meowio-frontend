@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SessionInfo = props => {
-  console.log(props);
   return (
     <div className="session-info-panel">
       <h2>Game Info</h2>

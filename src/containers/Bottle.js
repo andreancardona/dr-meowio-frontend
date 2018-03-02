@@ -4,8 +4,8 @@ import Pill from '../components/Pill.js';
 class Bottle extends React.Component {
   makePill = () => {
     const color = this.props.colorArray[Math.floor(Math.random() * this.props.colorArray.length)];
-    const classInfo = `a4 ${color}`;
-    return <Pill classInfo={classInfo} />;
+    const pillPosition = `a4`;
+    return <Pill color={color} pillPosition={pillPosition} />;
   };
 
   render() {
