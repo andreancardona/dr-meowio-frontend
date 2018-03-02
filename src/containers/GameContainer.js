@@ -9,6 +9,14 @@ import URLS from '../urls';
 class GameContainer extends React.Component {
   state = {
     currentUser: '',
+    currentTheme: {
+      colorOne: 'colorOne',
+      colorTwo: 'colorTwo',
+      colorThree: 'colorThree',
+      colorFour: 'colorFour',
+      name: 'Classic',
+      background: 'white'
+    },
     loggedIn: false,
     currentScore: 0,
     hiScores: [],
@@ -18,6 +26,7 @@ class GameContainer extends React.Component {
     inputValue: ''
   };
 
+  //write Theme selector that sets current theme!!!!
   componentDidMount() {
     this.getThemes();
     this.getLevels();
@@ -32,6 +41,15 @@ class GameContainer extends React.Component {
           themes: json
         });
       });
+  };
+
+  colorArray = () => {
+    const colorArray = [];
+    colorArray.push(this.state.currentTheme.colorOne);
+    colorArray.push(this.state.currentTheme.colorTwo);
+    colorArray.push(this.state.currentTheme.colorThree);
+    colorArray.push(this.state.currentTheme.colorFour);
+    return colorArray;
   };
 
   getLevels = () => {
@@ -96,7 +114,7 @@ class GameContainer extends React.Component {
         />
         <DrCat />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
-        <BottleContainer startGame={this.startGame} />
+        <BottleContainer startGame={this.startGame} colorArray={this.colorArray()} />
       </div>
     );
   }

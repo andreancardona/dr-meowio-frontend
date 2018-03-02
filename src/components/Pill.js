@@ -1,12 +1,7 @@
 import React from 'react';
 
 const Pill = props => {
-  return (
-    <div className="pill-outer">
-      <div className="pill-left" />
-      <div classname="pill-right" />
-    </div>
-  );
+  return <div className={props.classInfo} />;
 };
 
 export default Pill;

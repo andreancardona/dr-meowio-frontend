@@ -70,16 +70,24 @@ body {
   padding: 5%;
 }
 
-.pill-left {
+.colorOne {
   background-color: red;
   /* width: 32.5px;
   height: 32.5px; */
 }
 
-.pill-right {
+.colorTwo {
   background-color: blue;
   /* width: 32.5px;
   height: 32.5px; */
+}
+
+.colorThree {
+  background-color: yellow;
+}
+
+.colorFour {
+  background-color: green;
 }
 
 .pillgrid {
