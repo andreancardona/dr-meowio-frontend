@@ -7,8 +7,7 @@ class Bottle extends React.Component {
   };
   makePill = () => {
     const color = this.props.colorArray[Math.floor(Math.random() * this.props.colorArray.length)];
-    const pillPosition = `a4`;
-    return <Pill toggleActive={this.toggleActive} color={color} pillPosition={pillPosition} />;
+    return <Pill toggleActive={this.toggleActive} color={color} />;
   };
 
   toggleActive = () => {
@@ -16,7 +15,7 @@ class Bottle extends React.Component {
   };
 
   render() {
-    return <div className="bottle pillgrid">{this.makePill()}</div>;
+    return <div className="bottle pillgrid">{this.state.activePill ? null : this.makePill()}</div>;
   }
 }
 

@@ -18,11 +18,11 @@ class Pill extends React.Component {
 
   componentDidMount() {
     this.setState({
-      color: this.props.color,
-      position: this.props.pillPosition
+      color: this.props.color
     });
     this.pill.focus();
     setInterval(this.moveDown, 1000);
+    // this.props.toggleActive();
   }
 
   moveLeft = () => {
@@ -61,8 +61,8 @@ class Pill extends React.Component {
       this.setState({
         position: newPosition
       });
-    } else if (positionArray[0] === 'p') {
-      this.props.toggleActive();
+      // } else if (positionArray[0] === 'p') {
+      //   this.props.toggleActive();
     }
   };
 
