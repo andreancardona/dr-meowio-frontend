@@ -61,8 +61,9 @@ class Pill extends React.Component {
       this.setState({
         position: newPosition
       });
-      // } else if (positionArray[0] === 'p') {
-      //   this.props.toggleActive();
+    } else if (positionArray[0] === 'p') {
+      this.props.toggleActive();
+      this.props.addPilltoBoard(this.state.color, this.state.position);
     }
   };
 
