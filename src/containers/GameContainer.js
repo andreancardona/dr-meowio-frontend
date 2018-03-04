@@ -10,12 +10,12 @@ class GameContainer extends React.Component {
   state = {
     currentUser: '',
     currentTheme: {
-      colorOne: 'colorOne',
-      colorTwo: 'colorTwo',
-      colorThree: 'colorThree',
-      colorFour: 'colorFour',
+      colorOne: 'ColorOne',
+      colorTwo: 'ColorTwo',
+      colorThree: 'ColorThree',
+      colorFour: 'ColorFour',
       name: 'Classic',
-      background: 'white'
+      background: 'classicBackground'
     },
     loggedIn: false,
     currentScore: 0,
@@ -103,7 +103,7 @@ class GameContainer extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className={`container ${this.state.currentTheme.background}`}>
         <HiScoresList users={this.state.users} />
         <Login
           loggedIn={this.state.loggedIn}

@@ -8,182 +8,183 @@ class Bottle extends React.Component {
     gameBoard: [
       [
         //a
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //b
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //c
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //d
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //e
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //f
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //g
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //h
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //i
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //j
-        ({ position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null })
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //k
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //l
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //m
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //n
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //o
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ],
       [
         //p
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null },
-        { position: null, color: null }
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null },
+        { position: null, color: null, status: null }
       ]
     ]
   };
+
   makePill = () => {
     const color = this.props.colorArray[Math.floor(Math.random() * this.props.colorArray.length)];
     return (
@@ -210,9 +211,9 @@ class Bottle extends React.Component {
     return (
       <div className="bottle pillgrid">
         {this.state.gameBoard.map(row => {
-          return row.map(cellObj => {
+          return row.map((cellObj, index) => {
             return cellObj.color ? (
-              <StaticPill color={cellObj.color} position={cellObj.position} />
+              <StaticPill key={row + index} color={cellObj.color} position={cellObj.position} />
             ) : null;
           });
         })}

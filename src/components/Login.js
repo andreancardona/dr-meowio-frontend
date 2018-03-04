@@ -1,4 +1,5 @@
 import React from 'react';
+import ThemeSelector from './ThemeSelector';
 
 const Login = props => {
   return (
@@ -17,6 +18,7 @@ const Login = props => {
           <button onClick={props.setCurrentUser} type="button">
             Login
           </button>
+          <ThemeSelector />
         </div>
       )}
     </div>

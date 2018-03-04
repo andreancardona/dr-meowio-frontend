@@ -26,6 +26,10 @@ body {
   border-width: thick;
   width: 250px;
   height: 500px;
+  background: #ffffff;
+  background: -webkit-linear-gradient(left, #dddddd, #ffffff, #dddddd);
+  background: -o-linear-gradient(left, #dddddd, #ffffff, #dddddd);
+  background: linear-gradient(to right, #dddddd, #ffffff, #dddddd);
 }
 
 .login-panel {
@@ -35,7 +39,9 @@ body {
   grid-row-end: h;
   border-color: black;
   border-style: solid;
-  border-width: thin;
+  border-width: medium;
+  border-radius: 20px;
+  background-color: white;
   padding: 5%;
 }
 
@@ -55,7 +61,9 @@ body {
   grid-row-end: e;
   border-color: black;
   border-style: solid;
-  border-width: thin;
+  border-width: medium;
+  border-radius: 20px;
+  background-color: white;
   padding: 5%;
 }
 
@@ -66,41 +74,180 @@ body {
   grid-row-end: h;
   border-color: black;
   border-style: solid;
-  border-width: thin;
+  border-width: medium;
+  border-radius: 20px;
+  background-color: white;
   padding: 5%;
 }
-
-.colorOne {
-  background-color: red;
+/*/////THEMES////////// */
+/* Classic */
+.classicColorOne {
+  border-radius: 10px;
+  background-color: #ff2009;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.colorOne:focus {
+.classicColorOne:focus {
   outline: none;
 }
 
-.colorTwo {
-  background-color: blue;
+.classicColorTwo {
+  border-radius: 10px;
+  background-color: #391bb4;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.colorTwo:focus {
+.classicColorTwo:focus {
   outline: none;
 }
 
-.colorThree {
-  background-color: yellow;
+.classicColorThree {
+  border-radius: 10px;
+  background-color: #ffd109;
 }
-.colorThree:focus {
+.classicColorThree:focus {
   outline: none;
 }
 
-.colorFour {
-  background-color: green;
+.classicColorFour {
+  border-radius: 10px;
+  background-color: #07c431;
 }
-.colorFour:focus {
+.classicColorFour:focus {
   outline: none;
 }
+
+.classicBackground {
+  background: #000000;
+  background: -webkit-linear-gradient(bottom, #53346d, #000000);
+  background: -o-linear-gradient(bottom, #53346d, #000000);
+  background: linear-gradient(to top, #53346d, #000000);
+}
+
+/* Cat */
+
+.catColorOne {
+  background-color: #cd3c68;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.catColorOne:focus {
+  outline: none;
+}
+
+.catColorTwo {
+  background-color: #3e459f;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.catColorTwo:focus {
+  outline: none;
+}
+
+.catColorThree {
+  background-color: #e5ba43;
+}
+.catColorThree:focus {
+  outline: none;
+}
+
+.catColorFour {
+  background-color: #7dcc3c;
+}
+.catColorFour:focus {
+  outline: none;
+}
+
+.catBackground {
+  background: #fbd3e9;
+  background: -webkit-linear-gradient(bottom, #bb377d, #fbd3e9);
+  background: -o-linear-gradient(bottom, #bb377d, #fbd3e9);
+  background: linear-gradient(to top, #bb377d, #fbd3e9);
+}
+
+/* Sunset */
+
+.sunsetColorOne {
+  background-color: #ff8d0d;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.sunsetColorOne:focus {
+  outline: none;
+}
+
+.sunsetColorTwo {
+  background-color: #c90bc1;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.sunsetColorTwo:focus {
+  outline: none;
+}
+
+.sunsetColorThree {
+  background-color: #cef90d;
+}
+.sunsetColorThree:focus {
+  outline: none;
+}
+
+.sunsetColorFour {
+  background-color: #138ec4;
+}
+.sunsetColorFour:focus {
+  outline: none;
+}
+
+.sunsetBackground {
+  background: #fc354c;
+  background: -webkit-linear-gradient(#0abfbc, #fc354c);
+  background: -o-linear-gradient(#0abfbc, #fc354c);
+  background: linear-gradient(#0abfbc, #fc354c);
+}
+
+/* Neon */
+
+.neonColorOne {
+  background-color: #ff0040;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.neonColorOne:focus {
+  outline: none;
+}
+
+.neonColorTwo {
+  background-color: #2a26ff;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.neonColorTwo:focus {
+  outline: none;
+}
+
+.neonColorThree {
+  background-color: #fffc00;
+}
+.neonColorThree:focus {
+  outline: none;
+}
+
+.neonColorFour {
+  background-color: #66ff00;
+}
+.neonColorFour:focus {
+  outline: none;
+}
+
+.neonBackground {
+  background: #a80077;
+  background: -webkit-linear-gradient(bottom, #66ff00, #a80077);
+  background: -o-linear-gradient(bottom, #66ff00, #a80077);
+  background: linear-gradient(to top, #66ff00, #a80077);
+}
+
+/* game board*/
 
 .pillgrid {
   display: grid;

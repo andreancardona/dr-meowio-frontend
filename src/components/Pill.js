@@ -3,7 +3,8 @@ import React from 'react';
 class Pill extends React.Component {
   state = {
     color: '',
-    position: 'a4'
+    position: 'a4',
+    status: 'active'
   };
 
   handleKeyPress = key => {
