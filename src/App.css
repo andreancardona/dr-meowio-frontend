@@ -51,6 +51,7 @@ body {
   grid-row-start: a;
   grid-row-end: c;
   object-fit: cover;
+  border-radius: 20px;
   width: 100%;
 }
 

@@ -4,7 +4,8 @@ class Pill extends React.Component {
   state = {
     color: '',
     position: 'a4',
-    status: 'active'
+    status: 'active',
+    tabIndex: '0'
   };
 
   handleKeyPress = key => {
@@ -63,7 +64,8 @@ class Pill extends React.Component {
         position: newPosition
       });
     } else if (positionArray[0] === 'p') {
-      this.props.toggleActive();
+      // this.props.toggleActive();
+      this.setState({ status: 'inactive' });
       this.props.addPilltoBoard(this.state.color, this.state.position);
     }
   };
@@ -76,7 +78,7 @@ class Pill extends React.Component {
         }}
         onKeyDown={event => this.handleKeyPress(event.key)}
         className={`${this.state.color} ${this.state.position}`}
-        tabIndex="0"
+        tabIndex={this.state.tabIndex}
       />
     );
   }

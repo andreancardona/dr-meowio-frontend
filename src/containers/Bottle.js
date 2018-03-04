@@ -186,6 +186,8 @@ class Bottle extends React.Component {
   };
 
   makePill = () => {
+    // this.toggleActive();
+    console.log('make pill');
     const color = this.props.colorArray[Math.floor(Math.random() * this.props.colorArray.length)];
     return (
       <Pill toggleActive={this.toggleActive} addPilltoBoard={this.addPilltoBoard} color={color} />
@@ -202,7 +204,6 @@ class Bottle extends React.Component {
     const row = rows.indexOf(positionArray[0]);
     const col = positionArray[1] - 1;
     const newGameBoard = [...this.state.gameBoard];
-    console.log(newGameBoard);
     newGameBoard[col][row] = { position: position, color: color };
     this.setState({ gameBoard: newGameBoard });
   };
@@ -217,10 +218,11 @@ class Bottle extends React.Component {
             ) : null;
           });
         })}
-        {this.state.activePill ? null : this.makePill()}
+        {this.makePill()}
       </div>
     );
   }
 }
+// {this.state.activePill ? null : this.makePill()}
 //I think the active pill needs to function through the gameBoard state for this to work.
 export default Bottle;

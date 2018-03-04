@@ -10,10 +10,10 @@ class GameContainer extends React.Component {
   state = {
     currentUser: '',
     currentTheme: {
-      colorOne: 'ColorOne',
-      colorTwo: 'ColorTwo',
-      colorThree: 'ColorThree',
-      colorFour: 'ColorFour',
+      colorOne: 'classicColorOne',
+      colorTwo: 'classicColorTwo',
+      colorThree: 'classicColorThree',
+      colorFour: 'classicColorFour',
       name: 'Classic',
       background: 'classicBackground'
     },
