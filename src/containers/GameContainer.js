@@ -33,6 +33,8 @@ class GameContainer extends React.Component {
     this.getUsers();
   }
 
+  addPoints = () => this.setState({ currentScore: this.state.currentScore + 100 });
+
   getThemes = () => {
     fetch(URLS.themes)
       .then(res => res.json())
@@ -73,7 +75,6 @@ class GameContainer extends React.Component {
     const defaultUser = this.state.users.find(user => {
       return user.id === 3;
     });
-    console.log('defaultUser', defaultUser);
     this.setState({
       currentUser: defaultUser,
       loggedIn: false,
@@ -96,7 +97,6 @@ class GameContainer extends React.Component {
   };
 
   setInputValue = event => {
-    //console.log('testing', event.target.value);
     this.setState({
       inputValue: event.target.value
     });
@@ -120,7 +120,11 @@ class GameContainer extends React.Component {
         />
         <DrCat />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
-        <BottleContainer startGame={this.startGame} colorArray={this.colorArray()} />
+        <BottleContainer
+          startGame={this.startGame}
+          colorArray={this.colorArray()}
+          addPoints={this.addPoints}
+        />
       </div>
     );
   }

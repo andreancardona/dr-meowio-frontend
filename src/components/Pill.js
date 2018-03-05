@@ -17,68 +17,32 @@ class Pill extends React.Component {
     setInterval(this.moveDown, 1000);
   }
 
-  findTileBelow = () => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-    const positionArray = this.props.activePillPosition.split('');
-    const nextRow = rows.indexOf(positionArray[0]) < 15 ? rows.indexOf(positionArray[0]) + 1 : 15;
-    const col = positionArray[1];
-    const nextPosition = [rows[nextRow], col].join('');
-    const nextTile = this.props.gameBoard[nextRow].find(tile => tile.position === nextPosition);
-    return nextTile;
-  };
-
-  findTileLeft = () => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-    const positionArray = this.props.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]);
-    const lastCol = positionArray[1] === 1 ? 1 : parseInt(positionArray[1]) - 1;
-    const nextPosition = [rows[row], lastCol.toString()].join('');
-    const nextTile = this.props.gameBoard[row].find(tile => tile.position === nextPosition);
-    return nextTile;
-  };
-
-  findTileRight = () => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-    const positionArray = this.props.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]);
-    console.log(positionArray);
-    const nextCol = positionArray[1] === 8 ? 8 : parseInt(positionArray[1]) + 1;
-    const nextPosition = [rows[row], nextCol.toString()].join('');
-    const nextTile = this.props.gameBoard[row].find(tile => tile.position === nextPosition);
-    return nextTile;
-  };
-
   moveLeft = () => {
-    const nextTile = this.findTileLeft();
+    const nextTile = this.props.findTileLeft(1);
     const positionArray = this.props.activePillPosition.split('');
     if (positionArray[1] !== '1' && positionArray[0] !== 'p' && nextTile.status !== 'filled') {
       const prevCol = String.fromCharCode(positionArray[1].charCodeAt(0) - 1);
       positionArray.pop();
       positionArray.push(prevCol);
       const newPosition = positionArray.join('');
-      console.log(newPosition);
       this.props.updateActivePillPosition(newPosition);
     }
   };
 
   moveRight = () => {
-    const nextTile = this.findTileRight();
+    const nextTile = this.props.findTileRight(1);
     const positionArray = this.props.activePillPosition.split('');
     if (positionArray[1] !== '8' && positionArray[0] !== 'p' && nextTile.status !== 'filled') {
       const nextCol = String.fromCharCode(positionArray[1].charCodeAt(0) + 1);
       positionArray.pop();
       positionArray.push(nextCol);
       const newPosition = positionArray.join('');
-      console.log(newPosition);
       this.props.updateActivePillPosition(newPosition);
     }
   };
 
   moveDown = () => {
-    //find next tile
-
-    const nextTile = this.findTileBelow();
-    console.log(nextTile);
+    const nextTile = this.props.findTileBelow(1);
     const positionArray = this.props.activePillPosition.split('');
     if (positionArray[0] !== 'p' && nextTile.status !== 'filled') {
       const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);

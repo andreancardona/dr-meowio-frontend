@@ -128,6 +128,7 @@ body {
 /* Cat */
 
 .catColorOne {
+  border-radius: 10px;
   background-color: #cd3c68;
   /* width: 32.5px;
   height: 32.5px; */
@@ -137,6 +138,7 @@ body {
 }
 
 .catColorTwo {
+  border-radius: 10px;
   background-color: #3e459f;
   /* width: 32.5px;
   height: 32.5px; */
@@ -146,6 +148,7 @@ body {
 }
 
 .catColorThree {
+  border-radius: 10px;
   background-color: #e5ba43;
 }
 .catColorThree:focus {
@@ -153,6 +156,7 @@ body {
 }
 
 .catColorFour {
+  border-radius: 10px;
   background-color: #7dcc3c;
 }
 .catColorFour:focus {
@@ -169,6 +173,7 @@ body {
 /* Sunset */
 
 .sunsetColorOne {
+  border-radius: 10px;
   background-color: #ff8d0d;
   /* width: 32.5px;
   height: 32.5px; */
@@ -178,6 +183,7 @@ body {
 }
 
 .sunsetColorTwo {
+  border-radius: 10px;
   background-color: #c90bc1;
   /* width: 32.5px;
   height: 32.5px; */
@@ -187,6 +193,7 @@ body {
 }
 
 .sunsetColorThree {
+  border-radius: 10px;
   background-color: #cef90d;
 }
 .sunsetColorThree:focus {
@@ -194,6 +201,7 @@ body {
 }
 
 .sunsetColorFour {
+  border-radius: 10px;
   background-color: #138ec4;
 }
 .sunsetColorFour:focus {
@@ -210,6 +218,7 @@ body {
 /* Neon */
 
 .neonColorOne {
+  border-radius: 10px;
   background-color: #ff0040;
   /* width: 32.5px;
   height: 32.5px; */
@@ -219,6 +228,7 @@ body {
 }
 
 .neonColorTwo {
+  border-radius: 10px;
   background-color: #2a26ff;
   /* width: 32.5px;
   height: 32.5px; */
@@ -228,6 +238,7 @@ body {
 }
 
 .neonColorThree {
+  border-radius: 10px;
   background-color: #fffc00;
 }
 .neonColorThree:focus {
@@ -235,6 +246,7 @@ body {
 }
 
 .neonColorFour {
+  border-radius: 10px;
   background-color: #66ff00;
 }
 .neonColorFour:focus {

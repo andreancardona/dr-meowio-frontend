@@ -6,7 +6,7 @@ class BottleContainer extends React.Component {
   render() {
     return (
       <div className="bottle-panel">
-        <Bottle colorArray={this.props.colorArray} />
+        <Bottle colorArray={this.props.colorArray} addPoints={this.props.addPoints} />
         <button type="button" onClick={this.props.startGame}>
           START
         </button>
