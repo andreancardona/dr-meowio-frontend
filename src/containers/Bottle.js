@@ -194,9 +194,9 @@ class Bottle extends React.Component {
     this.setState({ activePillColor: activePillColor });
   };
 
-  makePill = () => {
+  makeActivePill = () => {
     // this.toggleActive();
-    // console.log('make pill');
+    console.log('make pill');
     return (
       <Pill
         setColor={this.setColor}
@@ -230,22 +230,29 @@ class Bottle extends React.Component {
     currentTile.status = 'filled';
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[col][row] = { currentTile };
-    this.setState({ gameBoard: newGameBoard });
+    this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
+    this.makeActivePill();
   };
 
   render() {
     return (
       <div className="bottle pillgrid">
-        {this.state.gameBoard.map(cellObj => {
-          return cellObj.color ? (
-            <StaticPill key={cellObj.position} color={cellObj.color} position={cellObj.position} />
-          ) : null;
-        })}
-        {this.makePill()}
+        {this.state.gameBoard.map(row =>
+          row.map(cellObj => {
+            return cellObj.status ? (
+              <StaticPill
+                key={cellObj.position}
+                color={cellObj.color}
+                position={cellObj.position}
+              />
+            ) : null;
+          })
+        )}
+        {this.makeActivePill()}
       </div>
     );
   }
 }
-// {this.state.activePill ? null : this.makePill()}
+// {this.state.activePill ? null : this.makeActivePill()}
 //I think the active pill needs to function through the gameBoard state for this to work.
 export default Bottle;
