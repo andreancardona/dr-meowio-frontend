@@ -31,8 +31,8 @@ class Pill extends React.Component {
     const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.props.activePillPosition.split('');
     const row = rows.indexOf(positionArray[0]);
-    const lastCol = positionArray[1] - 1;
-    const nextPosition = [rows[row], lastCol].join('');
+    const lastCol = positionArray[1] === 1 ? 1 : parseInt(positionArray[1]) - 1;
+    const nextPosition = [rows[row], lastCol.toString()].join('');
     const nextTile = this.props.gameBoard[row].find(tile => tile.position === nextPosition);
     return nextTile;
   };
@@ -40,9 +40,10 @@ class Pill extends React.Component {
   findTileRight = () => {
     const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.props.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]) < 15 ? rows.indexOf(positionArray[0]) + 1 : 15;
-    const nextCol = positionArray[1] + 1;
-    const nextPosition = [rows[row], nextCol].join('');
+    const row = rows.indexOf(positionArray[0]);
+    console.log(positionArray);
+    const nextCol = positionArray[1] === 8 ? 8 : parseInt(positionArray[1]) + 1;
+    const nextPosition = [rows[row], nextCol.toString()].join('');
     const nextTile = this.props.gameBoard[row].find(tile => tile.position === nextPosition);
     return nextTile;
   };
@@ -76,6 +77,7 @@ class Pill extends React.Component {
   moveDown = () => {
     //find next tile
     const nextTile = this.findTileBelow();
+    console.log(nextTile);
     const positionArray = this.props.activePillPosition.split('');
     if (positionArray[0] !== 'p' && nextTile.status !== 'filled') {
       const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
