@@ -4,7 +4,6 @@ import StaticPill from '../components/StaticPill.js';
 
 class Bottle extends React.Component {
   state = {
-    activePill: false,
     activePillColor: '',
     activePillPosition: 'a4',
     gameBoard: [
@@ -231,7 +230,7 @@ class Bottle extends React.Component {
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[col][row] = { currentTile };
     this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
-    this.makeActivePill();
+    this.setColor;
   };
 
   render() {
