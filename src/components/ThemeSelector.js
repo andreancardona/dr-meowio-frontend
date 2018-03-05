@@ -4,11 +4,11 @@ const ThemeSelector = props => {
   // const handleSelect
 
   return (
-    <select onChange={this.handleSelect}>
-      <option value="">Classic</option>
-      <option value="">Cat</option>
-      <option value="">Sunset</option>
-      <option value="">Neon</option>
+    <select onChange={event => props.setTheme(event.target.value)}>
+      <option value="Classic">Classic</option>
+      <option value="Cat">Cat</option>
+      <option value="Sunset">Sunset</option>
+      <option value="Neon">Neon</option>
     </select>
   );
 };

@@ -230,7 +230,7 @@ class Bottle extends React.Component {
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[col][row] = { currentTile };
     this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
-    this.setColor;
+    this.setColor();
   };
 
   render() {

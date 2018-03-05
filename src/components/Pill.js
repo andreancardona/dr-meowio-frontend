@@ -76,6 +76,7 @@ class Pill extends React.Component {
 
   moveDown = () => {
     //find next tile
+
     const nextTile = this.findTileBelow();
     console.log(nextTile);
     const positionArray = this.props.activePillPosition.split('');
