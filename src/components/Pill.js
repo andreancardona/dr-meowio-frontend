@@ -1,13 +1,6 @@
 import React from 'react';
 
 class Pill extends React.Component {
-  state = {
-    color: '',
-    position: 'a4',
-    status: 'active',
-    tabIndex: '0'
-  };
-
   handleKeyPress = key => {
     if (key === 'ArrowRight') {
       this.moveRight();
@@ -19,54 +12,46 @@ class Pill extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      color: this.props.color
-    });
+    this.props.setColor();
     this.pill.focus();
     setInterval(this.moveDown, 1000);
-    // this.props.toggleActive();
   }
 
   moveLeft = () => {
-    const positionArray = this.state.position.split('');
+    const positionArray = this.props.activePillPosition.split('');
     if (positionArray[1] !== '1' && positionArray[0] !== 'p') {
       const prevCol = String.fromCharCode(positionArray[1].charCodeAt(0) - 1);
       positionArray.pop();
       positionArray.push(prevCol);
       const newPosition = positionArray.join('');
-      this.setState({
-        position: newPosition
-      });
+      console.log(newPosition);
+      this.props.updateActivePillPosition(newPosition);
     }
   };
 
   moveRight = () => {
-    const positionArray = this.state.position.split('');
+    const positionArray = this.props.activePillPosition.split('');
     if (positionArray[1] !== '8' && positionArray[0] !== 'p') {
       const nextCol = String.fromCharCode(positionArray[1].charCodeAt(0) + 1);
       positionArray.pop();
       positionArray.push(nextCol);
       const newPosition = positionArray.join('');
-      this.setState({
-        position: newPosition
-      });
+      console.log(newPosition);
+      this.props.updateActivePillPosition(newPosition);
     }
   };
 
   moveDown = () => {
-    const positionArray = this.state.position.split('');
+    const positionArray = this.props.activePillPosition.split('');
     if (positionArray[0] !== 'p') {
       const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
       positionArray.shift();
       positionArray.unshift(nextRow);
       const newPosition = positionArray.join('');
-      this.setState({
-        position: newPosition
-      });
+      this.props.updateActivePillPosition(newPosition);
+      console.log(newPosition);
     } else if (positionArray[0] === 'p') {
-      // this.props.toggleActive();
-      this.setState({ status: 'inactive' });
-      this.props.addPilltoBoard(this.state.color, this.state.position);
+      this.props.stopPill();
     }
   };
 
@@ -77,8 +62,8 @@ class Pill extends React.Component {
           this.pill = div;
         }}
         onKeyDown={event => this.handleKeyPress(event.key)}
-        className={`${this.state.color} ${this.state.position}`}
-        tabIndex={this.state.tabIndex}
+        className={`${this.props.color} ${this.props.activePillPosition}`}
+        tabIndex="0"
       />
     );
   }

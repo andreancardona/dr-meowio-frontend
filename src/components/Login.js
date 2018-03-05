@@ -18,7 +18,7 @@ const Login = props => {
           <button onClick={props.setCurrentUser} type="button">
             Login
           </button>
-          <ThemeSelector />
+          <ThemeSelector setTheme={this.setTheme} />
         </div>
       )}
     </div>

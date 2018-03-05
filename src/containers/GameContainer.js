@@ -43,6 +43,11 @@ class GameContainer extends React.Component {
       });
   };
 
+  setTheme = themeName => {
+    const currentTheme = this.state.themes.find(theme => theme.name === themeName);
+    this.setState({ currentTheme });
+  };
+
   colorArray = () => {
     const colorArray = [];
     colorArray.push(this.state.currentTheme.colorOne);
@@ -111,6 +116,7 @@ class GameContainer extends React.Component {
           setInputValue={this.setInputValue}
           setCurrentUser={this.setCurrentUser}
           setDefaultUser={this.setDefaultUser}
+          setTheme={this.setTheme}
         />
         <DrCat />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
