@@ -14,7 +14,7 @@ class Pill extends React.Component {
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-    this.interval = setInterval(this.moveDown, 200);
+    this.interval = setInterval(this.moveDown, 2000);
   }
 
   componentWillReceiveProps() {
@@ -27,40 +27,25 @@ class Pill extends React.Component {
 
   moveLeft = () => {
     const nextTile = this.props.findTileLeft(1);
-    const positionArray = this.props.activePillPosition.split('');
-    if (positionArray[1] !== '1' && positionArray[0] !== 'p' && nextTile.status !== 'filled') {
-      const prevCol = String.fromCharCode(positionArray[1].charCodeAt(0) - 1);
-      positionArray.pop();
-      positionArray.push(prevCol);
-      const newPosition = positionArray.join('');
-      this.props.updateActivePillPosition(newPosition);
+    if (nextTile && nextTile.status !== 'filled') {
+      this.props.updateActivePillPosition(nextTile.position);
     }
   };
 
   moveRight = () => {
     const nextTile = this.props.findTileRight(1);
-    const positionArray = this.props.activePillPosition.split('');
-    if (positionArray[1] !== '8' && positionArray[0] !== 'p' && nextTile.status !== 'filled') {
-      const nextCol = String.fromCharCode(positionArray[1].charCodeAt(0) + 1);
-      positionArray.pop();
-      positionArray.push(nextCol);
-      const newPosition = positionArray.join('');
-      this.props.updateActivePillPosition(newPosition);
+    if (nextTile && nextTile.status !== 'filled') {
+      this.props.updateActivePillPosition(nextTile.position);
     }
   };
 
   moveDown = () => {
     const nextTile = this.props.findTileBelow(1);
-    const positionArray = this.props.activePillPosition.split('');
-    if (positionArray[0] !== 'p' && nextTile.status !== 'filled') {
-      const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
-      positionArray.shift();
-      positionArray.unshift(nextRow);
-      const newPosition = positionArray.join('');
-      this.props.updateActivePillPosition(newPosition);
-    } else if (positionArray[0] === 'p' || nextTile.status === 'filled') {
-      console.log('stop');
+    const currentRow = this.props.activePillPosition.split('')[0];
+    if (currentRow === 'p' || nextTile.status === 'filled') {
       this.props.stopPill();
+    } else {
+      this.props.updateActivePillPosition(nextTile.position);
     }
   };
 

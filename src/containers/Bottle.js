@@ -289,6 +289,7 @@ class Bottle extends React.Component {
     const col = positionArray[1];
     const nextPosition = [this.rowNames[nextRow], col.toString()].join('');
     const nextTile = this.state.gameBoard[nextRow].find(tile => tile.position === nextPosition);
+    console.log('below:', nextTile);
     return nextTile;
   };
 
@@ -301,6 +302,7 @@ class Bottle extends React.Component {
     const col = positionArray[1];
     const nextPosition = [this.rowNames[lastRow], col.toString()].join('');
     const nextTile = this.state.gameBoard[lastRow].find(tile => tile.position === nextPosition);
+    console.log('above:', nextTile);
     return nextTile;
   };
 
@@ -313,6 +315,7 @@ class Bottle extends React.Component {
         : parseInt(positionArray[1], 10) - distance;
     const nextPosition = [this.rowNames[row], lastCol.toString()].join('');
     const nextTile = this.state.gameBoard[row].find(tile => tile.position === nextPosition);
+    console.log('left:', nextTile);
     return nextTile;
   };
 
@@ -325,6 +328,7 @@ class Bottle extends React.Component {
         : parseInt(positionArray[1], 10) + distance;
     const nextPosition = [this.rowNames[row], nextCol.toString()].join('');
     const nextTile = this.state.gameBoard[row].find(tile => tile.position === nextPosition);
+    console.log('right:', nextTile);
     return nextTile;
   };
 
@@ -332,31 +336,27 @@ class Bottle extends React.Component {
     this.setState({ activePillPosition: newPosition });
   };
 
-  toggleActive = () => {
-    this.setState({ activePill: !this.state.activePill });
-  };
-
   stopPill = () => {
     const positionArray = this.state.activePillPosition.split('');
     const row = this.rowIndex(positionArray[0]);
     const col = parseInt(positionArray[1], 10);
-    console.log('row:', row, 'col:', col);
+    // console.log('row:', row, 'col:', col);
     const currentTile = this.state.gameBoard[row].find(
       tile => tile.position === this.state.activePillPosition
     );
     currentTile.color = this.state.activePillColor;
     currentTile.status = 'filled';
-    console.log(currentTile);
+    // console.log(currentTile);
     if (this.match(positionArray)) {
       this.handleMatch(positionArray);
     }
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[row][col] = { currentTile };
-    console.log(newGameBoard);
+    // console.log(newGameBoard);
     const spawnTile = newGameBoard[0][3];
     console.log(!!spawnTile.status);
     if (spawnTile.status) {
-      console.log('GAME OVER');
+      // console.log('GAME OVER');
       const endGameBoard = [...this.state.gameBoard];
       endGameBoard.forEach(row =>
         row.forEach(tile => {
@@ -364,9 +364,7 @@ class Bottle extends React.Component {
           tile.status = 'filled';
         })
       );
-      this.setState({ gameBoard: endGameBoard, gameOver: true }, () =>
-        console.log(this.state.gameOver, 'after set')
-      );
+      this.setState({ gameBoard: endGameBoard, gameOver: true });
     } else {
       console.log('hitting else');
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
