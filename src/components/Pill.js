@@ -14,7 +14,14 @@ class Pill extends React.Component {
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-    setInterval(this.moveDown, 200);
+    this.interval = setInterval(this.moveDown, 200);
+  }
+
+  componentWillReceiveProps() {
+    console.log('willrecieve true', this.props.gameOver);
+    if (this.props.gameOver) {
+      clearInterval(this.interval);
+    }
   }
 
   moveLeft = () => {
@@ -46,9 +53,12 @@ class Pill extends React.Component {
     const positionArray = this.props.activePillPosition.split('');
     if (positionArray[0] !== 'p' && nextTile.status !== 'filled') {
       const nextRow = String.fromCharCode(positionArray[0].charCodeAt(0) + 1);
+      console.log('current row:', String.fromCharCode(positionArray[0].charCodeAt(0)));
+      console.log('nextRow:', nextRow);
       positionArray.shift();
       positionArray.unshift(nextRow);
       const newPosition = positionArray.join('');
+      console.log(newPosition);
       this.props.updateActivePillPosition(newPosition);
     } else if (positionArray[0] === 'p' || nextTile.status === 'filled') {
       this.props.stopPill();

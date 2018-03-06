@@ -87,10 +87,12 @@ class GameContainer extends React.Component {
     const currentUser = this.state.users.find(user => {
       return user.name === this.state.inputValue;
     });
-    this.setState({
-      currentUser: currentUser
-    });
-    this.setLoggedIn();
+    if (currentUser) {
+      this.setState({
+        currentUser: currentUser
+      });
+      this.setLoggedIn();
+    }
   };
 
   setLoggedIn = () => {
