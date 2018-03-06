@@ -2,19 +2,21 @@ import React from 'react';
 
 class Pill extends React.Component {
   handleKeyPress = key => {
-    if (key === 'ArrowRight') {
-      this.moveRight();
-    } else if (key === 'ArrowLeft') {
-      this.moveLeft();
-    } else if (key === 'ArrowDown') {
-      this.moveDown();
+    if (!this.props.gameOver) {
+      if (key === 'ArrowRight') {
+        this.moveRight();
+      } else if (key === 'ArrowLeft') {
+        this.moveLeft();
+      } else if (key === 'ArrowDown') {
+        this.moveDown();
+      }
     }
   };
 
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-    this.interval = setInterval(this.moveDown, 500);
+    this.interval = setInterval(this.moveDown, 100);
   }
 
   componentWillReceiveProps() {
