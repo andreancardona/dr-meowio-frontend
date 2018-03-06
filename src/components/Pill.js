@@ -14,7 +14,7 @@ class Pill extends React.Component {
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-    setInterval(this.moveDown, 1000);
+    setInterval(this.moveDown, 100);
   }
 
   moveLeft = () => {

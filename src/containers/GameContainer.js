@@ -2,13 +2,14 @@ import React from 'react';
 import HiScoresList from '../components/HiScoresList';
 import Login from '../components/Login';
 import SessionInfo from '../components/SessionInfo';
-import BottleContainer from './BottleContainer';
+import Bottle from './Bottle';
 import DrCat from '../components/DrCat';
 import URLS from '../urls';
 
 class GameContainer extends React.Component {
   state = {
     currentUser: '',
+    active: false,
     currentTheme: {
       colorOne: 'classicColorOne',
       colorTwo: 'classicColorTwo',
@@ -103,6 +104,9 @@ class GameContainer extends React.Component {
   };
 
   startGame = () => {
+    this.setState({
+      active: !this.state.active
+    });
     console.log('STARRRRRTTT!!!!');
   };
 
@@ -120,11 +124,16 @@ class GameContainer extends React.Component {
         />
         <DrCat />
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
-        <BottleContainer
-          startGame={this.startGame}
-          colorArray={this.colorArray()}
-          addPoints={this.addPoints}
-        />
+        <div className="bottle-panel">
+          <Bottle
+            colorArray={this.colorArray()}
+            addPoints={this.addPoints}
+            active={this.state.active}
+          />
+          <button type="button" onClick={this.startGame}>
+            START
+          </button>
+        </div>
       </div>
     );
   }
