@@ -6,6 +6,7 @@ class Bottle extends React.Component {
   state = {
     activePillColor: '',
     activePillPosition: 'a4',
+    gameOver: false,
     gameBoard: [
       [
         // a
@@ -208,6 +209,7 @@ class Bottle extends React.Component {
           setColor={this.setColor}
           toggleActive={this.toggleActive}
           stopPill={this.stopPill}
+          gameOver={this.state.gameOver}
           color={this.state.activePillColor}
           gameBoard={this.state.gameBoard}
           updateActivePillPosition={this.updateActivePillPosition}
@@ -337,7 +339,7 @@ class Bottle extends React.Component {
   stopPill = () => {
     const positionArray = this.state.activePillPosition.split('');
     const row = this.rowIndex(positionArray[0]);
-    const col = parseInt(positionArray[1]) - 1;
+    const col = parseInt(positionArray[1], 10);
     const currentTile = this.state.gameBoard[row].find(
       tile => tile.position === this.state.activePillPosition
     );
@@ -346,11 +348,26 @@ class Bottle extends React.Component {
     if (this.match(positionArray)) {
       this.handleMatch(positionArray);
     }
-    console.log('ct', currentTile, 'row', row, 'col', col);
+    // console.log('ct', currentTile, 'row', row, 'col', col);
     const newGameBoard = [...this.state.gameBoard];
-    newGameBoard[row][col + 1] = { currentTile };
-    this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
-    this.setColor();
+    newGameBoard[row][col] = { currentTile };
+    const spawnTile = newGameBoard[0][3];
+    if (spawnTile.status) {
+      console.log('GAME OVER');
+      const endGameBoard = [...this.state.gameBoard];
+      endGameBoard.forEach(row =>
+        row.forEach(tile => {
+          tile.color = this.state.activePillColor;
+          tile.status = 'filled';
+        })
+      );
+      this.setState({ gameBoard: endGameBoard, gameOver: true }, () =>
+        console.log(this.state.gameOver, 'after set')
+      );
+    } else {
+      this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
+      this.setColor();
+    }
   };
 
   render() {
