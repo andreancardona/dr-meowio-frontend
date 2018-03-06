@@ -231,33 +231,65 @@ class Bottle extends React.Component {
       positionArray[0] === 'a' || positionArray[0] === 'b' ? false : this.findTileAbove(2);
     const twoLeft = parseInt(positionArray[1], 10) <= 2 ? false : this.findTileLeft(2);
     const twoRight = parseInt(positionArray[1], 10) >= 6 ? false : this.findTileRight(2);
+    console.log(oneRight);
     //see if any match color
-    if (positionArray[0] !== 'p') {
-      if (oneBelow.color === activeColor && oneAbove.color === activeColor) {
-        return true;
-      } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
-        return true;
-      } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
-        return true;
-      } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
-        return true;
-      } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
-        return true;
-      } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+    // if (positionArray[0] !== 'p') {
+    const currentTile = this.findTile(this.state.activePillPosition);
+    if (oneBelow.color === activeColor && oneAbove.color === activeColor) {
+      this.removeTile(oneBelow);
+      this.removeTile(oneAbove);
+      this.removeTile(currentTile);
+      this.props.addPoints();
+    } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
+      this.removeTile(oneBelow);
+      this.removeTile(twoBelow);
+      this.removeTile(currentTile);
+      this.props.addPoints();
+    } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
+      this.removeTile(oneAbove);
+      this.removeTile(twoAbove);
+      this.removeTile(currentTile);
+      this.props.addPoints();
+    } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
+      this.removeTile(oneLeft);
+      this.removeTile(oneRight);
+      this.removeTile(currentTile);
+      this.props.addPoints();
+    } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
+      this.removeTile(oneLeft);
+      this.removeTile(twoLeft);
+      this.removeTile(currentTile);
+      this.props.addPoints();
+    } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
+      this.removeTile(oneRight);
+      this.removeTile(twoRight);
+      this.removeTile(currentTile);
+      this.props.addPoints();
     }
   };
 
   handleMatch = positionArray => {
-    if (this.match(positionArray)) {
-      this.props.addPoints();
-      //handle gameboard update here
-    }
+    this.match(positionArray);
+    this.props.addPoints();
+  };
+
+  removeTile = tile => {
+    tile.color = null;
+    tile.status = null;
+    //find tile & update gameBoard
+    const newGameBoard = [...this.state.gameBoard];
+    const positionArray = tile.position.split('');
+    const rowIdx = this.rowIndex(positionArray[0]);
+    const column = parseInt(positionArray[1], 10);
+    newGameBoard[rowIdx][column - 1] = tile;
+    this.setState({ gameBoard: newGameBoard });
+  };
+
+  findTile = position => {
+    const positionArray = this.state.activePillPosition.split('');
+    const row = positionArray[0];
+    const col = positionArray[1];
+    return this.state.gameBoard[this.rowIndex(row)].find(tile => tile.position === position);
   };
 
   findTileBelow = distance => {
