@@ -344,7 +344,9 @@ class Bottle extends React.Component {
     );
     currentTile.color = this.state.activePillColor;
     currentTile.status = 'filled';
-    //handle score here later
+    if (this.match([row, column])) {
+      this.handleMatch([row, column]);
+    }
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[this.rowIndex(row)][column - 1] = currentTile;
     //add end of game here later
