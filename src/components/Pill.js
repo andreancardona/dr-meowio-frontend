@@ -59,6 +59,7 @@ class Pill extends React.Component {
       const newPosition = positionArray.join('');
       this.props.updateActivePillPosition(newPosition);
     } else if (positionArray[0] === 'p' || nextTile.status === 'filled') {
+      console.log('stop');
       this.props.stopPill();
     }
   };

@@ -340,18 +340,21 @@ class Bottle extends React.Component {
     const positionArray = this.state.activePillPosition.split('');
     const row = this.rowIndex(positionArray[0]);
     const col = parseInt(positionArray[1], 10);
+    console.log('row:', row, 'col:', col);
     const currentTile = this.state.gameBoard[row].find(
       tile => tile.position === this.state.activePillPosition
     );
     currentTile.color = this.state.activePillColor;
     currentTile.status = 'filled';
+    console.log(currentTile);
     if (this.match(positionArray)) {
       this.handleMatch(positionArray);
     }
-    // console.log('ct', currentTile, 'row', row, 'col', col);
     const newGameBoard = [...this.state.gameBoard];
     newGameBoard[row][col] = { currentTile };
+    console.log(newGameBoard);
     const spawnTile = newGameBoard[0][3];
+    console.log(!!spawnTile.status);
     if (spawnTile.status) {
       console.log('GAME OVER');
       const endGameBoard = [...this.state.gameBoard];
@@ -365,6 +368,7 @@ class Bottle extends React.Component {
         console.log(this.state.gameOver, 'after set')
       );
     } else {
+      console.log('hitting else');
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
       this.setColor();
     }
