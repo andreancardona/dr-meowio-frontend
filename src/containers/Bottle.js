@@ -337,40 +337,55 @@ class Bottle extends React.Component {
   };
 
   stopPill = () => {
-    const positionArray = this.state.activePillPosition.split('');
-    const row = this.rowIndex(positionArray[0]);
-    const col = parseInt(positionArray[1], 10);
-    // console.log('row:', row, 'col:', col);
-    const currentTile = this.state.gameBoard[row].find(
+    const row = this.state.activePillPosition.split('')[0];
+    const column = this.state.activePillPosition.split('')[1];
+    const currentTile = this.state.gameBoard[this.rowIndex(row)].find(
       tile => tile.position === this.state.activePillPosition
     );
     currentTile.color = this.state.activePillColor;
     currentTile.status = 'filled';
-    // console.log(currentTile);
-    if (this.match(positionArray)) {
-      this.handleMatch(positionArray);
-    }
+    //handle score here later
     const newGameBoard = [...this.state.gameBoard];
-    newGameBoard[row][col] = { currentTile };
-    // console.log(newGameBoard);
-    const spawnTile = newGameBoard[0][3];
-    console.log(!!spawnTile.status);
-    if (spawnTile.status) {
-      // console.log('GAME OVER');
-      const endGameBoard = [...this.state.gameBoard];
-      endGameBoard.forEach(row =>
-        row.forEach(tile => {
-          tile.color = this.state.activePillColor;
-          tile.status = 'filled';
-        })
-      );
-      this.setState({ gameBoard: endGameBoard, gameOver: true });
-    } else {
-      console.log('hitting else');
-      this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
-      this.setColor();
-    }
+    newGameBoard[this.rowIndex(row)][column - 1] = currentTile;
+    //add end of game here later
+    this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
   };
+
+  // stopPill = () => {
+  //   const positionArray = this.state.activePillPosition.split('');
+  //   const row = this.rowIndex(positionArray[0]);
+  //   const col = parseInt(positionArray[1], 10);
+  //   // console.log('row:', row, 'col:', col);
+  //   const currentTile = this.state.gameBoard[row].find(
+  //     tile => tile.position === this.state.activePillPosition
+  //   );
+  //   currentTile.color = this.state.activePillColor;
+  //   currentTile.status = 'filled';
+  //   // console.log(currentTile);
+  //   if (this.match(positionArray)) {
+  //     this.handleMatch(positionArray);
+  //   }
+  //   const newGameBoard = [...this.state.gameBoard];
+  //   newGameBoard[row][col] = { currentTile };
+  //   // console.log(newGameBoard);
+  //   const spawnTile = newGameBoard[0][3];
+  //   console.log(!!spawnTile.status);
+  //   if (spawnTile.status) {
+  //     // console.log('GAME OVER');
+  //     const endGameBoard = [...this.state.gameBoard];
+  //     endGameBoard.forEach(row =>
+  //       row.forEach(tile => {
+  //         tile.color = this.state.activePillColor;
+  //         tile.status = 'filled';
+  //       })
+  //     );
+  //     this.setState({ gameBoard: endGameBoard, gameOver: true });
+  //   } else {
+  //     console.log('hitting else');
+  //     this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
+  //     this.setColor();
+  //   }
+  // };
 
   render() {
     return (
