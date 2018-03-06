@@ -186,6 +186,12 @@ class Bottle extends React.Component {
     ]
   };
 
+  rowNames = (() => {
+    return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+  })();
+
+  rowIndex = letter => this.rowNames.indexOf(letter);
+
   setColor = () => {
     const activePillColor = this.props.colorArray[
       Math.floor(Math.random() * this.props.colorArray.length)
@@ -218,30 +224,48 @@ class Bottle extends React.Component {
     const activeColor = this.state.activePillColor;
     const oneBelow = positionArray[0] === 'p' ? false : this.findTileBelow(1);
     const oneAbove = positionArray[0] === 'a' ? false : this.findTileAbove(1);
-    const oneLeft = positionArray[1] <= 1 ? false : this.findTileLeft(1);
-    const oneRight = positionArray[1] >= 8 ? false : this.findTileRight(1);
+    const oneLeft = parseInt(positionArray[1], 10) <= 1 ? false : this.findTileLeft(1);
+    const oneRight = parseInt(positionArray[1], 10) >= 7 ? false : this.findTileRight(1);
     const twoBelow =
       positionArray[0] === 'p' || positionArray[0] === 'o' ? false : this.findTileBelow(2);
     const twoAbove =
       positionArray[0] === 'a' || positionArray[0] === 'b' ? false : this.findTileAbove(2);
-    const twoLeft = positionArray[1] <= 2 ? false : this.findTileLeft(2);
-    const twoRight = positionArray[1] >= 7 ? false : this.findTileRight(2);
-    if (
-      positionArray !== 'p' &&
-      ((oneBelow.color === this.state.activePillColor &&
-        oneAbove.color === this.state.activePillColor) ||
-        (oneBelow.color === this.state.activePillColor &&
-          twoBelow.color === this.state.activePillColor) ||
-        (oneAbove.color === this.state.activePillColor &&
-          twoAbove.color === this.state.activePillColor) ||
-        (oneLeft.color === this.state.activePillColor &&
-          oneRight.color === this.state.activePillColor) ||
-        (oneLeft.color === this.state.activePillColor &&
-          twoLeft.color === this.state.activePillColor) ||
-        (oneRight.color === this.state.activePillColor &&
-          twoRight.color === this.state.activePillColor))
-    ) {
-      return true;
+    const twoLeft = parseInt(positionArray[1], 10) <= 2 ? false : this.findTileLeft(2);
+    const twoRight = parseInt(positionArray[1], 10) >= 6 ? false : this.findTileRight(2);
+    // console.log(
+    //   '1b:',
+    //   oneBelow,
+    //   '2b:',
+    //   twoBelow,
+    //   '1l:',
+    //   oneLeft,
+    //   '2l:',
+    //   twoLeft,
+    //   '1r:',
+    //   oneRight,
+    //   '2r:',
+    //   twoRight,
+    //   '1a:',
+    //   oneAbove,
+    //   '2a:',
+    //   twoAbove
+    // );
+    if (positionArray[0] !== 'p') {
+      if (oneBelow.color === activeColor && oneAbove.color === activeColor) {
+        return true;
+      } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
+        return true;
+      } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
+        return true;
+      } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
+        return true;
+      } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
+        return true;
+      } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -255,51 +279,49 @@ class Bottle extends React.Component {
   };
 
   findTileBelow = distance => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.state.activePillPosition.split('');
     const nextRow =
-      rows.indexOf(positionArray[0]) + distance <= 15
-        ? rows.indexOf(positionArray[0]) + distance
+      this.rowIndex(positionArray[0]) + distance <= 15
+        ? this.rowIndex(positionArray[0]) + distance
         : 15;
     const col = positionArray[1];
-    const nextPosition = [rows[nextRow], col.toString()].join('');
+    const nextPosition = [this.rowNames[nextRow], col.toString()].join('');
     const nextTile = this.state.gameBoard[nextRow].find(tile => tile.position === nextPosition);
     return nextTile;
   };
 
   findTileAbove = distance => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.state.activePillPosition.split('');
     const lastRow =
-      rows.indexOf(positionArray[0]) - distance < 0 ? rows.indexOf(positionArray[0]) - distance : 0;
+      this.rowIndex(positionArray[0]) - distance <= 0
+        ? 0
+        : this.rowIndex(positionArray[0]) - distance;
     const col = positionArray[1];
-    const nextPosition = [rows[lastRow], col.toString()].join('');
+    const nextPosition = [this.rowNames[lastRow], col.toString()].join('');
     const nextTile = this.state.gameBoard[lastRow].find(tile => tile.position === nextPosition);
     return nextTile;
   };
 
   findTileLeft = distance => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.state.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]);
+    const row = this.rowIndex(positionArray[0]);
     const lastCol =
       parseInt(positionArray[1], 10) - distance <= 1
         ? 1
         : parseInt(positionArray[1], 10) - distance;
-    const nextPosition = [rows[row], lastCol.toString()].join('');
+    const nextPosition = [this.rowNames[row], lastCol.toString()].join('');
     const nextTile = this.state.gameBoard[row].find(tile => tile.position === nextPosition);
     return nextTile;
   };
 
   findTileRight = distance => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.state.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]);
+    const row = this.rowIndex(positionArray[0]);
     const nextCol =
       parseInt(positionArray[1], 10) + distance >= 8
         ? 8
         : parseInt(positionArray[1], 10) + distance;
-    const nextPosition = [rows[row], nextCol.toString()].join('');
+    const nextPosition = [this.rowNames[row], nextCol.toString()].join('');
     const nextTile = this.state.gameBoard[row].find(tile => tile.position === nextPosition);
     return nextTile;
   };
@@ -313,10 +335,9 @@ class Bottle extends React.Component {
   };
 
   stopPill = () => {
-    const rows = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
     const positionArray = this.state.activePillPosition.split('');
-    const row = rows.indexOf(positionArray[0]);
-    const col = positionArray[1] - 1;
+    const row = this.rowIndex(positionArray[0]);
+    const col = parseInt(positionArray[1]) - 1;
     const currentTile = this.state.gameBoard[row].find(
       tile => tile.position === this.state.activePillPosition
     );
@@ -325,8 +346,9 @@ class Bottle extends React.Component {
     if (this.match(positionArray)) {
       this.handleMatch(positionArray);
     }
+    console.log('ct', currentTile, 'row', row, 'col', col);
     const newGameBoard = [...this.state.gameBoard];
-    newGameBoard[col][row] = { currentTile };
+    newGameBoard[row][col + 1] = { currentTile };
     this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
     this.setColor();
   };
