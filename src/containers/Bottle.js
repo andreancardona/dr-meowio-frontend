@@ -6,7 +6,6 @@ class Bottle extends React.Component {
   state = {
     activePillColor: '',
     activePillPosition: 'a4',
-    gameOver: false,
     gameBoard: [
       [
         // a
@@ -201,25 +200,24 @@ class Bottle extends React.Component {
   };
 
   makeActivePill = () => {
-    // if (this.state.gameBoard[0][3].status === 'filled') {
-    //   console.log('GAME OVER');
-    // } else {
-    return (
-      <Pill
-        setColor={this.setColor}
-        toggleActive={this.toggleActive}
-        stopPill={this.stopPill}
-        gameOver={this.state.gameOver}
-        color={this.state.activePillColor}
-        gameBoard={this.state.gameBoard}
-        updateActivePillPosition={this.updateActivePillPosition}
-        activePillPosition={this.state.activePillPosition}
-        findTileBelow={this.findTileBelow}
-        findTileLeft={this.findTileLeft}
-        findTileRight={this.findTileRight}
-      />
-    );
-    // }
+    if (this.state.gameBoard[0][3].status === 'filled') {
+      console.log('GAME OVER');
+    } else {
+      return (
+        <Pill
+          setColor={this.setColor}
+          toggleActive={this.toggleActive}
+          stopPill={this.stopPill}
+          color={this.state.activePillColor}
+          gameBoard={this.state.gameBoard}
+          updateActivePillPosition={this.updateActivePillPosition}
+          activePillPosition={this.state.activePillPosition}
+          findTileBelow={this.findTileBelow}
+          findTileLeft={this.findTileLeft}
+          findTileRight={this.findTileRight}
+        />
+      );
+    }
   };
 
   match = positionArray => {
@@ -234,7 +232,24 @@ class Bottle extends React.Component {
       positionArray[0] === 'a' || positionArray[0] === 'b' ? false : this.findTileAbove(2);
     const twoLeft = parseInt(positionArray[1], 10) <= 2 ? false : this.findTileLeft(2);
     const twoRight = parseInt(positionArray[1], 10) >= 6 ? false : this.findTileRight(2);
-
+    // console.log(
+    //   '1b:',
+    //   oneBelow,
+    //   '2b:',
+    //   twoBelow,
+    //   '1l:',
+    //   oneLeft,
+    //   '2l:',
+    //   twoLeft,
+    //   '1r:',
+    //   oneRight,
+    //   '2r:',
+    //   twoRight,
+    //   '1a:',
+    //   oneAbove,
+    //   '2a:',
+    //   twoAbove
+    // );
     if (positionArray[0] !== 'p') {
       if (oneBelow.color === activeColor && oneAbove.color === activeColor) {
         return true;
@@ -322,7 +337,7 @@ class Bottle extends React.Component {
   stopPill = () => {
     const positionArray = this.state.activePillPosition.split('');
     const row = this.rowIndex(positionArray[0]);
-    const col = parseInt(positionArray[1], 10);
+    const col = parseInt(positionArray[1]) - 1;
     const currentTile = this.state.gameBoard[row].find(
       tile => tile.position === this.state.activePillPosition
     );
@@ -331,24 +346,11 @@ class Bottle extends React.Component {
     if (this.match(positionArray)) {
       this.handleMatch(positionArray);
     }
+    console.log('ct', currentTile, 'row', row, 'col', col);
     const newGameBoard = [...this.state.gameBoard];
-    newGameBoard[row][col - 1] = { currentTile };
-    const spawnTile = this.state.gameBoard[0][3];
-    if (spawnTile.status !== 'filled') {
-      this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
-      this.setColor();
-    } else {
-      //HANDLE GAME OVER
-      const endGameBoard = [...this.state.gameBoard];
-      endGameBoard.forEach(row =>
-        row.forEach(tile => {
-          tile.color = this.state.activePillColor;
-          tile.status = 'filled';
-        })
-      );
-      console.log('GAME OVER');
-      this.setState({ gameBoard: endGameBoard, gameOver: true });
-    }
+    newGameBoard[row][col + 1] = { currentTile };
+    this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard });
+    this.setColor();
   };
 
   render() {
