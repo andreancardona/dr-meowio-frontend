@@ -42,7 +42,9 @@ class GameContainer extends React.Component {
   updateHiScore = () => {
     console.log('update!');
     const currentUser = { ...this.state.currentUser };
-    currentUser.hiScore = this.state.currentScore;
+    this.state.currentScore > currentUser.hiScore
+      ? (currentUser.hiScore = this.state.currentScore)
+      : currentUser.hiScore;
     console.log(currentUser);
     this.setState({ currentUser: currentUser });
     fetch(`http://localhost:3000/users/${currentUser.id}`, {
@@ -52,7 +54,7 @@ class GameContainer extends React.Component {
       },
       method: 'PATCH',
       body: JSON.stringify(currentUser)
-    }).then(response => this.updateUsers());
+    }).then(response => this.refreshUsers());
   };
 
   addPoints = () => this.setState({ currentScore: this.state.currentScore + 100 });
@@ -67,7 +69,7 @@ class GameContainer extends React.Component {
       });
   };
 
-  updateUsers = () => {
+  refreshUsers = () => {
     fetch(URLS.users)
       .then(res => res.json())
       .then(json => this.setState({ users: json }));

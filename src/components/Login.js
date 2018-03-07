@@ -14,7 +14,13 @@ const Login = props => {
       ) : (
         <div>
           <h2>Log In</h2>
-          <input onChange={props.setInputValue} type="text" name="login" value={props.inputValue} />
+          <input
+            onChange={props.setInputValue}
+            type="text"
+            name="login"
+            value={props.inputValue}
+            autoComplete="off"
+          />
           <button onClick={props.setCurrentUser} type="button">
             Login
           </button>
