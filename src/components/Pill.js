@@ -13,6 +13,29 @@ class Pill extends React.Component {
     }
   };
 
+  //start of speed increase:
+  // componentDidMount() {
+  //   this.props.setColor();
+  //   this.pill.focus();
+  //   // this.interval = setInterval(this.moveDown, 300);
+  //   var interval = 1000;
+  //   const timer = () => {
+  //     interval = interval > 100 ? interval - 100 : 100;
+  //     console.log(interval);
+  //     this.moveDown();
+  //     if (interval >= 50) {
+  //       this.timeOut = setTimeout(timer, interval);
+  //     }
+  //   };
+  //   timer();
+  // }
+  //
+  // componentWillReceiveProps() {
+  //   if (this.props.gameOver === true) {
+  //     clearTimeout(this.timeOut);
+  //   }
+  // }
+
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();

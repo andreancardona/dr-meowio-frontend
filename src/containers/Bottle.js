@@ -203,6 +203,7 @@ class Bottle extends React.Component {
   makeActivePill = () => {
     return (
       <Pill
+        currentScore={this.props.currentScore}
         setColor={this.setColor}
         toggleActive={this.toggleActive}
         stopPill={this.stopPill}

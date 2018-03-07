@@ -8,7 +8,12 @@ import URLS from '../urls';
 
 class GameContainer extends React.Component {
   state = {
-    currentUser: '',
+    currentUser: {
+      name: 'anonymous',
+      id: 1,
+      hiScore: 0,
+      hiLevel: 1
+    },
     active: false,
     currentTheme: {
       colorOne: 'classicColorOne',
@@ -40,13 +45,14 @@ class GameContainer extends React.Component {
     currentUser.hiScore = this.state.currentScore;
     console.log(currentUser);
     this.setState({ currentUser: currentUser });
-    currentUser => {
-      fetch(`http://localhost:3000/users/${currentUser.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(currentUser)
-      });
-    };
+    fetch(`http://localhost:3000/users/${currentUser.id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify(currentUser)
+    }).then(response => this.updateUsers());
   };
 
   addPoints = () => this.setState({ currentScore: this.state.currentScore + 100 });
@@ -59,6 +65,12 @@ class GameContainer extends React.Component {
           themes: json
         });
       });
+  };
+
+  updateUsers = () => {
+    fetch(URLS.users)
+      .then(res => res.json())
+      .then(json => this.setState({ users: json }));
   };
 
   setTheme = themeName => {
@@ -89,7 +101,7 @@ class GameContainer extends React.Component {
 
   setDefaultUser = () => {
     const defaultUser = this.state.users.find(user => {
-      return user.id === 3;
+      return user.id === 1;
     });
     this.setState({
       currentUser: defaultUser,
@@ -130,6 +142,7 @@ class GameContainer extends React.Component {
       <div className={`container ${this.state.currentTheme.background}`}>
         <HiScoresList users={this.state.users} />
         <Login
+          currentUser={this.state.currentUser}
           loggedIn={this.state.loggedIn}
           inputValue={this.state.inputValue}
           setInputValue={this.setInputValue}
@@ -141,6 +154,7 @@ class GameContainer extends React.Component {
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
         <div className="bottle-panel">
           <Bottle
+            currentScore={this.state.currentScore}
             updateHiScore={this.updateHiScore}
             colorArray={this.colorArray()}
             addPoints={this.addPoints}
