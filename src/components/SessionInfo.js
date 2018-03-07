@@ -5,6 +5,7 @@ const SessionInfo = props => {
     <div className="session-info-panel">
       <h2>Game Info</h2>
       <h5>{props.currentUser.name}</h5>
+      <h2>Score</h2>
       <h3>{props.currentScore}</h3>
     </div>
   );

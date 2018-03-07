@@ -20,6 +20,7 @@ const Login = props => {
           </button>
         </div>
       )}
+      <h2>Choose Theme</h2>
       <ThemeSelector setTheme={props.setTheme} />
     </div>
   );
