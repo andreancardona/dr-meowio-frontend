@@ -34,6 +34,21 @@ class GameContainer extends React.Component {
     this.getUsers();
   }
 
+  updateHiScore = () => {
+    console.log('update!');
+    const currentUser = { ...this.state.currentUser };
+    currentUser.hiScore = this.state.currentScore;
+    console.log(currentUser);
+    this.setState({ currentUser: currentUser });
+    currentUser => {
+      fetch(`http://localhost:3000/users/${currentUser.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(currentUser)
+      });
+    };
+  };
+
   addPoints = () => this.setState({ currentScore: this.state.currentScore + 100 });
 
   getThemes = () => {
@@ -84,7 +99,7 @@ class GameContainer extends React.Component {
   };
 
   setCurrentUser = () => {
-    const currentUser = this.state.users.find(user => {
+    let currentUser = this.state.users.find(user => {
       return user.name === this.state.inputValue;
     });
     this.setState({
@@ -126,6 +141,7 @@ class GameContainer extends React.Component {
         <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
         <div className="bottle-panel">
           <Bottle
+            updateHiScore={this.updateHiScore}
             colorArray={this.colorArray()}
             addPoints={this.addPoints}
             active={this.state.active}

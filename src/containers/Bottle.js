@@ -231,9 +231,7 @@ class Bottle extends React.Component {
       positionArray[0] === 'a' || positionArray[0] === 'b' ? false : this.findTileAbove(2);
     const twoLeft = parseInt(positionArray[1], 10) <= 2 ? false : this.findTileLeft(2);
     const twoRight = parseInt(positionArray[1], 10) >= 6 ? false : this.findTileRight(2);
-    console.log(oneRight);
     //see if any match color
-    // if (positionArray[0] !== 'p') {
     const currentTile = this.findTile(this.state.activePillPosition);
     if (oneBelow.color === activeColor && oneAbove.color === activeColor) {
       this.removeTile(oneBelow);
@@ -273,6 +271,24 @@ class Bottle extends React.Component {
     this.props.addPoints();
   };
 
+  // shiftDown = () => {
+  //   const newGameBoard = [...this.state.gameBoard];
+  //   newGameBoard.forEach(row =>
+  //     row.forEach(tile => {
+  //       let belowTile = this.findTileBelow(1);
+  //       if (!belowTile.status && tile.position !== 'a4') {
+  //         const rowBelow = belowTile.position.split('')[0];
+  //         const colBelow = belowTile.position.split('')[1];
+  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].status = tile.status;
+  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].color = tile.color;
+  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].status = null;
+  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].color = null;
+  //       }
+  //     })
+  //   );
+  //   this.setState({ gameBoard: newGameBoard });
+  // };
+
   removeTile = tile => {
     tile.color = null;
     tile.status = null;
@@ -283,12 +299,12 @@ class Bottle extends React.Component {
     const column = parseInt(positionArray[1], 10);
     newGameBoard[rowIdx][column - 1] = tile;
     this.setState({ gameBoard: newGameBoard });
+    // this.shiftDown();
   };
 
   findTile = position => {
     const positionArray = this.state.activePillPosition.split('');
     const row = positionArray[0];
-    const col = positionArray[1];
     return this.state.gameBoard[this.rowIndex(row)].find(tile => tile.position === position);
   };
 
@@ -370,6 +386,7 @@ class Bottle extends React.Component {
         })
       );
       this.setState({ gameOver: true });
+      this.props.updateHiScore();
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
     }
