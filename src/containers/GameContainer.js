@@ -47,7 +47,7 @@ class GameContainer extends React.Component {
       : currentUser.hiScore;
     console.log(currentUser);
     this.setState({ currentUser: currentUser });
-    fetch(`http://localhost:3000/users/${currentUser.id}`, {
+    fetch(`https://young-ridge-15090.herokuapp.com/${currentUser.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
