@@ -32,7 +32,6 @@ class GameContainer extends React.Component {
     inputValue: ''
   };
 
-  //write Theme selector that sets current theme!!!!
   componentDidMount() {
     this.getThemes();
     this.getLevels();
