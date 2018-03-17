@@ -1,16 +1,15 @@
 # Dr. Meowio
+###### An Addicting Game Built in React and Ruby on Rails in the style of Bejewled/Dr. Mario
 
-
-
-Dr. Meowio Front End Repo - https://github.com/johneckert/dr-meowrio-frontend 
-Dr. Meowio Back End Repo - https://github.com/johneckert/dr-meowrio-backend
+* Dr. Meowio Front End Repo - https://github.com/johneckert/dr-meowrio-frontend 
+* Dr. Meowio Back End Repo - https://github.com/johneckert/dr-meowrio-backend
 
 A Game Built in React and Ruby on Rails in the style of Bejewled/Dr. Mario
 
 # Live Demo
 You may Play at: 
 
-# Instructions
+# How To Play
 
 * You may play annonymously or log-in to track your high score.  
 * Choose a background theme from the dropdown menu and hit start to begin.
@@ -48,4 +47,4 @@ Start your server
 ### In Your Browser
 Navigate to the web address of your Node server http://localhost:3001 and start a new game
 
-# How To Play
+
