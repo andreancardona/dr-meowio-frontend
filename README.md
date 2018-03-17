@@ -39,4 +39,8 @@ You may Play at:
 ### In Your Browser
 Navigate to the web address of your Node server http://localhost:3001 (or whatever yours is) and start a new game
 
+### Additional Info
+* You may get a CORS error while running this locally
+* For themes to work locally, you will need to create themes in database that correspond to css classes.
+* For this to work locally you will need to point the fetch requests in the front end at your backend.
 
