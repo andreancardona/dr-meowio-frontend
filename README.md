@@ -37,6 +37,6 @@ You may Play at:
 3. Start your server ```npm start```
 
 ### In Your Browser
-Navigate to the web address of your Node server http://localhost:3001 and start a new game
+Navigate to the web address of your Node server http://localhost:3001 (or whatever yours is) and start a new game
 
 
