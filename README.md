@@ -24,23 +24,17 @@ You may Play at:
 
 ### Back End Setup
 
-Clone this repo - https://github.com/johneckert/dr-meowrio-backend
-Install Gems
-```bundle install```
-Setup Database
-```rake db:create```
-```run rake db:migrate```
-Start your server
-```rails s```
+1. Clone this repo - https://github.com/johneckert/dr-meowrio-backend
+2. Install Gems ```bundle install```
+3. Setup Database ```rake db:create```, then ```run rake db:migrate```
+4. Start your server ```rails s```
 
 
 ### Front End Setup
 
-Clone this repo - https://github.com/johneckert/dr-meowio-frontend
-Install Dependencies
-```npm install```
-Start your server
-```npm start```
+1. Clone this repo - https://github.com/johneckert/dr-meowio-frontend
+2. Install Dependencies ```npm install```
+3. Start your server ```npm start```
 
 ### In Your Browser
 Navigate to the web address of your Node server http://localhost:3001 and start a new game
