@@ -1,7 +1,11 @@
 import React from 'react';
 
-const DrCat = () => {
-  return <img className="image-panel" src="Dr-cat.png" alt="Dr. Meowrio" />;
+const DrCat = props => {
+  return (
+    <div className={`image-panel pow-${props.currentTheme}`}>
+      <img className="cat-image" src="doctorcat-logo.png" alt="Dr. Meowrio" />
+    </div>
+  );
 };
 
 export default DrCat;

@@ -17,7 +17,7 @@ const HiScoresList = props => {
   };
   return (
     <div className="hiscores-panel">
-      <h2>High Scores</h2>
+      <p>High Scores</p>
       <ol>
         {hiScores().map((
           user //map and return user scores

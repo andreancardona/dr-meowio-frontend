@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Puritan');
+@import url('https://fonts.googleapis.com/css?family=Rammetto+One');
+@import url('https://fonts.googleapis.com/css?family=Hind');
+
 h2 {
   font-size: 20px;
 }
@@ -9,77 +13,234 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: [one] 5% [two] 15% [three] 5% [four] 45% [five] 10% [six] 10% [seven] 5% [end];
-  grid-template-rows: [a] 20% [b] 20% [c] 20% [d] 20% [e] 20% [f] 20% [g] 20% [h] 20% [end];
-}
+  /* Hard Grid Sizes */
+  grid-template-columns: [one] 103px [two] 250px [three] 70px [four] 57px [five] 193px [six] 70px [seven] 740px [end];
+  grid-template-rows: [a] 165px [b] 423px [c] 77px [d] 70px [e] 94px [f] 500px [end];
 
-.bottle-panel {
-  grid-column-start: four;
-  grid-column-end: five;
-  grid-row-start: b;
-  grid-row-end: h;
+  /* Responsize Grid Sizes */
+  /* grid-template-columns: [one] 8% [two] 20% [three] 5% [four] 5% [five] 15% [six] 5% [seven] 42%x [end];
+  grid-template-rows: [a] 18% [b] 47% [c] 9% [d] 8% [e] 10% [f] 8% [end]; */
 }
-
+/* Sections */
 .bottle {
-  border-color: black;
-  border-style: solid;
-  border-width: thick;
+  grid-column-start: two;
+  grid-column-end: three;
+  grid-row-start: b;
+  grid-row-end: d;
+
   width: 250px;
   height: 500px;
-  background: #ffffff;
-  background: -webkit-linear-gradient(left, #dddddd, #ffffff, #dddddd);
-  background: -o-linear-gradient(left, #dddddd, #ffffff, #dddddd);
-  background: linear-gradient(to right, #dddddd, #ffffff, #dddddd);
+  box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.start-button {
+  grid-column-start: two;
+  grid-column-end: three;
+  grid-row-start: d;
+  grid-row-end: e;
+
+  margin-top: 15px;
+  width: 250px;
+  height: 50px;
+  border-radius: 2%;
+  background-color: #f9be02;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  font-family: Hind;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  text-align: center;
+  color: #ffffff;
 }
 
 .login-panel {
-  grid-column-start: five;
-  grid-column-end: seven;
-  grid-row-start: f;
-  grid-row-end: h;
-  border-color: black;
-  border-style: solid;
-  border-width: medium;
-  border-radius: 20px;
-  background-color: white;
-  padding: 5%;
+  grid-column-start: four;
+  grid-column-end: six;
+  grid-row-start: e;
+  grid-row-end: end;
+}
+
+.login-input {
+  background: transparent;
+  border-radius: 0;
+  appearance: none; /* remove default arrow */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px #ffffff;
+  width: 100%;
+  height: 15px;
+  font-family: Hind;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.login-label {
+  height: 18px;
+  font-family: Hind;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.login-button {
+  margin-top: 15px;
+  width: 250px;
+  height: 50px;
+  border-radius: 2%;
+  background-color: #f9be02;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+  font-family: Hind;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.theme-panel {
+  grid-column-start: two;
+  grid-column-end: three;
+  grid-row-start: e;
+  grid-row-end: end;
+}
+
+.theme-input {
+  background: transparent;
+  border-radius: 0;
+  appearance: none; /* remove default arrow */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px #ffffff;
+  width: 100%;
+  height: 21px;
+  font-family: Hind;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.theme-label {
+  height: 18px;
+  font-family: Hind;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.title-panel {
+  grid-column-start: two;
+  grid-column-end: five;
+  grid-row-start: a;
+  grid-row-end: b;
 }
 
 .image-panel {
-  grid-column-start: five;
-  grid-column-end: seven;
+  height: 588px;
+  grid-column-start: seven;
+  grid-column-end: end;
   grid-row-start: a;
   grid-row-end: c;
-  object-fit: cover;
-  border-radius: 20px;
-  width: 100%;
+  background-image: url('./assets/explode.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.cat-image {
+  width: 535px;
+  margin: 40px;
+  max-width: 100%;
 }
 
 .session-info-panel {
-  grid-column-start: five;
-  grid-column-end: seven;
-  grid-row-start: c;
-  grid-row-end: e;
-  border-color: black;
-  border-style: solid;
-  border-width: medium;
-  border-radius: 20px;
-  background-color: white;
-  padding: 5%;
+  grid-column-start: four;
+  grid-column-end: six;
+  grid-row-start: b;
+  grid-row-end: d;
+  border: none;
+  background: transparent;
+  text-align: center;
+}
+
+.label {
+  font-family: 'Puritan', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.score {
+  font-family: 'Rammetto One', cursive;
+  font-size: 72px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.player {
+  font-family: 'Hind';
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
 }
 
 .hiscores-panel {
-  grid-column-start: two;
-  grid-column-end: three;
-  grid-row-start: a;
-  grid-row-end: h;
-  border-color: black;
-  border-style: solid;
-  border-width: medium;
-  border-radius: 20px;
-  background-color: white;
-  padding: 5%;
+  grid-column-start: seven;
+  grid-column-end: end;
+  grid-row-start: c;
+  grid-row-end: e;
+  font-family: 'Puritan';
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin-left: 200px;
+  color: #ffffff;
 }
+
 /*/////THEMES////////// */
 
 /* Classic */
@@ -120,10 +281,11 @@ body {
 }
 
 .classicBackground {
-  background: #000000;
+  /* background: #000000;
   background: -webkit-linear-gradient(bottom, #53346d, #000000);
   background: -o-linear-gradient(bottom, #53346d, #000000);
-  background: linear-gradient(to top, #53346d, #000000);
+  background: linear-gradient(to top, #53346d, #000000); */
+  background: #555555;
 }
 
 /* Cat */
