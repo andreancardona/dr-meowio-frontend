@@ -379,13 +379,13 @@ class Bottle extends React.Component {
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
       console.log('GAME OVER');
-      const endGameBoard = [...this.state.gameBoard];
-      endGameBoard.forEach(row =>
-        row.forEach(tile => {
-          tile.color = this.state.activePillColor;
-          tile.status = 'filled';
-        })
-      );
+      // const endGameBoard = [...this.state.gameBoard];
+      // endGameBoard.forEach(row =>
+      //   row.forEach(tile => {
+      //     tile.color = this.state.activePillColor;
+      //     tile.status = 'filled';
+      //   })
+      // );
       this.setState({ gameOver: true });
       this.props.updateHiScore();
     } else {
@@ -393,23 +393,31 @@ class Bottle extends React.Component {
     }
   };
 
+  generateGameBoard = () => {
+    if (this.state.gameOver) {
+      return <div className="bottle pillgrid game-over" />;
+    } else {
+      return (
+        <div className="bottle pillgrid">
+          {this.state.gameBoard.map(row =>
+            row.map(cellObj => {
+              return cellObj.status ? (
+                <StaticPill
+                  key={cellObj.position}
+                  color={cellObj.color}
+                  position={cellObj.position}
+                />
+              ) : null;
+            })
+          )}
+          {this.props.active ? this.makeActivePill() : null}
+        </div>
+      );
+    }
+  };
+
   render() {
-    return (
-      <div className="bottle pillgrid">
-        {this.state.gameBoard.map(row =>
-          row.map(cellObj => {
-            return cellObj.status ? (
-              <StaticPill
-                key={cellObj.position}
-                color={cellObj.color}
-                position={cellObj.position}
-              />
-            ) : null;
-          })
-        )}
-        {this.props.active ? this.makeActivePill() : null}
-      </div>
-    );
+    return this.generateGameBoard();
   }
 }
 export default Bottle;

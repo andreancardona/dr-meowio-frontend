@@ -3,10 +3,10 @@ import React from 'react';
 const SessionInfo = props => {
   return (
     <div className="session-info-panel">
-      <h2>Game Info</h2>
-      <h5>{props.currentUser.name}</h5>
-      <h2>Score</h2>
-      <h3>{props.currentScore}</h3>
+      <p className={`label ${props.currentTheme.name}-score`}>Score:</p>
+      <p className={`score ${props.currentTheme.name}-score`}>{props.currentScore}</p>
+      <p className={`label ${props.currentTheme.name}-player`}>Player:</p>
+      <p className={`player ${props.currentTheme.name}-player`}>{props.currentUser.name}</p>
     </div>
   );
 };

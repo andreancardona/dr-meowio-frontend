@@ -13,16 +13,19 @@ const HiScoresList = props => {
         return 0;
       }
     });
-    return sortedUsers.slice(0, 10); //returns sorted array
+    const cleanSortedUsers = sortedUsers.filter(user => {
+      return user.name !== 'anonymous';
+    });
+    return cleanSortedUsers.slice(0, 5); //returns sorted array
   };
   return (
     <div className="hiscores-panel">
-      <h2>High Scores</h2>
+      <p>High Scores</p>
       <ol>
         {hiScores().map((
           user //map and return user scores
         ) => (
-          <li key={user.id}>
+          <li key={user.id} className="hiscore-text">
             {user.name}: {user.hiScore}
           </li>
         ))}

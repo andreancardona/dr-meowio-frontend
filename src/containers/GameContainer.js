@@ -4,6 +4,8 @@ import Login from '../components/Login';
 import SessionInfo from '../components/SessionInfo';
 import Bottle from './Bottle';
 import DrCat from '../components/DrCat';
+import Header from '../components/Header';
+import ThemeSelector from '../components/ThemeSelector';
 import URLS from '../urls';
 
 class GameContainer extends React.Component {
@@ -16,12 +18,12 @@ class GameContainer extends React.Component {
     },
     active: false,
     currentTheme: {
-      colorOne: 'classicColorOne',
-      colorTwo: 'classicColorTwo',
-      colorThree: 'classicColorThree',
-      colorFour: 'classicColorFour',
-      name: 'Classic',
-      background: 'classicBackground'
+      colorOne: 'powColorOne',
+      colorTwo: 'powColorTwo',
+      colorThree: 'powColorThree',
+      colorFour: 'powColorFour',
+      name: 'Pow',
+      background: 'powBackground'
     },
     loggedIn: false,
     currentScore: 0,
@@ -141,6 +143,7 @@ class GameContainer extends React.Component {
   render() {
     return (
       <div className={`container ${this.state.currentTheme.background}`}>
+        <Header currentTheme={this.state.currentTheme} />
         <HiScoresList users={this.state.users} />
         <Login
           currentUser={this.state.currentUser}
@@ -151,20 +154,27 @@ class GameContainer extends React.Component {
           setDefaultUser={this.setDefaultUser}
           setTheme={this.setTheme}
         />
-        <DrCat />
-        <SessionInfo currentUser={this.state.currentUser} currentScore={this.state.currentScore} />
-        <div className="bottle-panel">
-          <Bottle
-            currentScore={this.state.currentScore}
-            updateHiScore={this.updateHiScore}
-            colorArray={this.colorArray()}
-            addPoints={this.addPoints}
-            active={this.state.active}
-          />
-          <button type="button" onClick={this.startGame}>
-            START
-          </button>
-        </div>
+        <DrCat currentTheme={this.state.currentTheme} />
+        <SessionInfo
+          currentUser={this.state.currentUser}
+          currentScore={this.state.currentScore}
+          currentTheme={this.state.currentTheme}
+        />
+        <Bottle
+          currentScore={this.state.currentScore}
+          updateHiScore={this.updateHiScore}
+          colorArray={this.colorArray()}
+          addPoints={this.addPoints}
+          active={this.state.active}
+        />
+        <button
+          className={`start-button button-${this.state.currentTheme.name}`}
+          type="button"
+          onClick={this.startGame}
+        >
+          START
+        </button>
+        <ThemeSelector setTheme={this.setTheme} />
       </div>
     );
   }
