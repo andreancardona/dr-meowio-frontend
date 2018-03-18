@@ -7,7 +7,7 @@
 
 # Demo
 
-[![Dr. Meowio demo video]('screengrab.png')](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
+[![Dr. Meowio demo video]('./screengrab.png')](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
 
 # How To Play
 
