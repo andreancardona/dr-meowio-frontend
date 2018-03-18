@@ -7,7 +7,7 @@
 
 # Demo
 
-[[Dr. Meowio demo video](https://img.youtube.com/vi/https://youtu.be/Dc_FGiS7ZEU/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
+[![Dr. Meowio demo video](https://img.youtube.com/vi/https://youtu.be/Dc_FGiS7ZEU/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
 
 # How To Play
 
