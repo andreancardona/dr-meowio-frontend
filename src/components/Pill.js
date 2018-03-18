@@ -1,13 +1,14 @@
 import React from 'react';
 
 class Pill extends React.Component {
-  handleKeyPress = key => {
+  handleKeyPress = event => {
+    event.preventDefault();
     if (!this.props.gameOver) {
-      if (key === 'ArrowRight') {
+      if (event.key === 'ArrowRight') {
         this.moveRight();
-      } else if (key === 'ArrowLeft') {
+      } else if (event.key === 'ArrowLeft') {
         this.moveLeft();
-      } else if (key === 'ArrowDown') {
+      } else if (event.key === 'ArrowDown') {
         this.moveDown();
       }
     }
@@ -50,6 +51,7 @@ class Pill extends React.Component {
 
   moveLeft = () => {
     const nextTile = this.props.findTileLeft(1);
+
     if (nextTile && nextTile.status !== 'filled') {
       this.props.updateActivePillPosition(nextTile.position);
     }
@@ -78,7 +80,7 @@ class Pill extends React.Component {
         ref={div => {
           this.pill = div;
         }}
-        onKeyDown={event => this.handleKeyPress(event.key)}
+        onKeyDown={event => this.handleKeyPress(event)}
         className={`${this.props.color} ${this.props.activePillPosition}`}
         tabIndex="0"
       />

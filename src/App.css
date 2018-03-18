@@ -164,6 +164,7 @@ body {
   grid-column-end: five;
   grid-row-start: a;
   grid-row-end: b;
+  align-self: center;
 }
 
 .image-panel {
@@ -241,6 +242,11 @@ body {
   color: #ffffff;
 }
 
+.hiscore-text {
+  font-family: 'Hind';
+  font-size: 24px;
+}
+
 /*/////THEMES////////// */
 
 /* Pow */
@@ -281,7 +287,7 @@ body {
 }
 
 .powBackground {
-  background: linear-gradient(to bottom, #f53240 30%, #7cdbd5 30%);
+  background: linear-gradient(to bottom, #f53240 27%, #7cdbd5 27%);
 }
 
 .button-Pow {
@@ -292,6 +298,10 @@ body {
   background-image: url('./assets/explode-2.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Pow-score {
+  color: rgb(162, 0, 16);
 }
 
 /* Baby */
@@ -332,7 +342,7 @@ body {
 }
 
 .babyBackground {
-  background: linear-gradient(to bottom, #4c6d9d 30%, #75797c 30%);
+  background: linear-gradient(to bottom, #4c6d9d 27%, #75797c 27%);
 }
 
 .button-Baby {
@@ -343,6 +353,10 @@ body {
   background-image: url('./assets/explode-6.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Baby-score {
+  color: rgb(18, 23, 57);
 }
 
 /* glam */
@@ -383,7 +397,7 @@ body {
 }
 
 .glamBackground {
-  background: linear-gradient(to bottom, #e7e0de 30%, #4717f6 30%);
+  background: linear-gradient(to bottom, #e7e0de 27%, #4717f6 27%);
 }
 
 .button-Glam {
@@ -394,6 +408,10 @@ body {
   background-image: url('./assets/explode-7.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Glam-score {
+  color: rgb(144, 135, 133);
 }
 
 /* mod */
@@ -434,7 +452,7 @@ body {
 }
 
 .modBackground {
-  background: linear-gradient(to bottom, #f5f5f5 30%, #041626 30%);
+  background: linear-gradient(to bottom, #f5f5f5 27%, #041626 27%);
 }
 
 .button-Mod {
@@ -445,6 +463,10 @@ body {
   background-image: url('./assets/explode-8.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Mod-score {
+  color: rgb(164, 164, 164);
 }
 
 /* pickle */
@@ -485,7 +507,7 @@ body {
 }
 
 .pickleBackground {
-  background: linear-gradient(to bottom, #f2f2f2 30%, #465c8b 30%);
+  background: linear-gradient(to bottom, #f2f2f2 27%, #465c8b 27%);
 }
 
 .button-Pickle {
@@ -496,6 +518,10 @@ body {
   background-image: url('./assets/explode-4.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Pickle-score {
+  color: rgb(159, 159, 159);
 }
 
 /* grape */
@@ -536,7 +562,7 @@ body {
 }
 
 .grapeBackground {
-  background: linear-gradient(to bottom, #f8eee7 30%, #4b2a4c 30%);
+  background: linear-gradient(to bottom, #f8eee7 27%, #4b2a4c 27%);
 }
 
 .button-Grape {
@@ -547,6 +573,10 @@ body {
   background-image: url('./assets/explode-3.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.Grape-score {
+  color: rgb(167, 154, 144);
 }
 
 /* vitaminC */
@@ -587,7 +617,7 @@ body {
 }
 
 .vitaminCBackground {
-  background: linear-gradient(to bottom, #f7c331 30%, #6b7a8f 30%);
+  background: linear-gradient(to bottom, #f7c331 27%, #6b7a8f 27%);
 }
 
 .button-VitaminC {
@@ -598,6 +628,10 @@ body {
   background-image: url('./assets/explode-5.png');
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.VitaminC-score {
+  color: rgb(165, 100, 14);
 }
 
 /* berry */
@@ -638,7 +672,7 @@ body {
 }
 
 .berryBackground {
-  background: linear-gradient(to bottom, #e63475 30%, #67aeca 30%);
+  background: linear-gradient(to bottom, #e63475 27%, #67aeca 27%);
 }
 
 .button-Berry {
@@ -651,8 +685,19 @@ body {
   background-size: contain;
 }
 
+.Berry-score {
+  color: rgb(142, 0, 26);
+}
+
 /*///////////////////////////////////////////////////////////////////////////*/
 /* game board*/
+
+.game-over {
+  background-image: url('./assets/doctorcat-dead.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+}
 
 .pillgrid {
   display: grid;
