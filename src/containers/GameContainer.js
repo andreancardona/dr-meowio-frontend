@@ -18,12 +18,12 @@ class GameContainer extends React.Component {
     },
     active: false,
     currentTheme: {
-      colorOne: 'classicColorOne',
-      colorTwo: 'classicColorTwo',
-      colorThree: 'classicColorThree',
-      colorFour: 'classicColorFour',
-      name: 'Classic',
-      background: 'classicBackground'
+      colorOne: 'powColorOne',
+      colorTwo: 'powColorTwo',
+      colorThree: 'powColorThree',
+      colorFour: 'powColorFour',
+      name: 'Pow',
+      background: 'powBackground'
     },
     loggedIn: false,
     currentScore: 0,
@@ -167,7 +167,11 @@ class GameContainer extends React.Component {
           addPoints={this.addPoints}
           active={this.state.active}
         />
-        <button className="start-button" type="button" onClick={this.startGame}>
+        <button
+          className={`start-button button-${this.state.currentTheme.name}`}
+          type="button"
+          onClick={this.startGame}
+        >
           START
         </button>
         <ThemeSelector setTheme={this.setTheme} />

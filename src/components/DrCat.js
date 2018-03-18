@@ -2,7 +2,7 @@ import React from 'react';
 
 const DrCat = props => {
   return (
-    <div className={`image-panel pow-${props.currentTheme}`}>
+    <div className={`image-panel pow-${props.currentTheme.name}`}>
       <img className="cat-image" src="doctorcat-logo.png" alt="Dr. Meowrio" />
     </div>
   );

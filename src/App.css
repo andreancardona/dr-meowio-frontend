@@ -45,7 +45,6 @@ body {
   width: 250px;
   height: 50px;
   border-radius: 2%;
-  background-color: #f9be02;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 
   font-family: Hind;
@@ -173,9 +172,6 @@ body {
   grid-column-end: end;
   grid-row-start: a;
   grid-row-end: c;
-  background-image: url('./assets/explode.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
 }
 
 .cat-image {
@@ -202,6 +198,8 @@ body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .score {
@@ -212,6 +210,8 @@ body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 .player {
@@ -243,186 +243,415 @@ body {
 
 /*/////THEMES////////// */
 
-/* Classic */
-.classicColorOne {
+/* Pow */
+.powColorOne {
   border-radius: 10px;
-  background-color: #ff2009;
+  background-color: #f53240;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.classicColorOne:focus {
+.powColorOne:focus {
   outline: none;
 }
 
-.classicColorTwo {
+.powColorTwo {
   border-radius: 10px;
-  background-color: #391bb4;
+  background-color: #4184f3;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.classicColorTwo:focus {
+.powColorTwo:focus {
   outline: none;
 }
 
-.classicColorThree {
+.powColorThree {
   border-radius: 10px;
-  background-color: #ffd109;
+  background-color: #f9be02;
 }
-.classicColorThree:focus {
+.powColorThree:focus {
   outline: none;
 }
 
-.classicColorFour {
+.powColorFour {
   border-radius: 10px;
-  background-color: #07c431;
+  background-color: #7cdbd5;
 }
-.classicColorFour:focus {
+.powColorFour:focus {
   outline: none;
 }
 
-.classicBackground {
-  /* background: #000000;
-  background: -webkit-linear-gradient(bottom, #53346d, #000000);
-  background: -o-linear-gradient(bottom, #53346d, #000000);
-  background: linear-gradient(to top, #53346d, #000000); */
-  background: #555555;
+.powBackground {
+  background: linear-gradient(to bottom, #f53240 30%, #7cdbd5 30%);
 }
 
-/* Cat */
+.button-Pow {
+  background-color: #f9be02;
+}
 
-.catColorOne {
+.pow-Pow {
+  background-image: url('./assets/explode-2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Baby */
+.babyColorOne {
   border-radius: 10px;
-  background-color: #cd3c68;
+  background-color: #eeb6b7;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.catColorOne:focus {
+.babyColorOne:focus {
   outline: none;
 }
 
-.catColorTwo {
+.babyColorTwo {
   border-radius: 10px;
-  background-color: #3e459f;
+  background-color: #4184f3;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.catColorTwo:focus {
+.babyColorTwo:focus {
   outline: none;
 }
 
-.catColorThree {
+.babyColorThree {
   border-radius: 10px;
-  background-color: #e5ba43;
+  background-color: #75797c;
 }
-.catColorThree:focus {
+.babyColorThree:focus {
   outline: none;
 }
 
-.catColorFour {
+.babyColorFour {
   border-radius: 10px;
-  background-color: #7dcc3c;
+  background-color: #4c6d9d;
 }
-.catColorFour:focus {
+.babyColorFour:focus {
   outline: none;
 }
 
-.catBackground {
-  background: #fbd3e9;
-  background: -webkit-linear-gradient(bottom, #bb377d, #fbd3e9);
-  background: -o-linear-gradient(bottom, #bb377d, #fbd3e9);
-  background: linear-gradient(to top, #bb377d, #fbd3e9);
+.babyBackground {
+  background: linear-gradient(to bottom, #4c6d9d 30%, #75797c 30%);
 }
 
-/* Sunset */
+.button-Baby {
+  background-color: #eeb6b7;
+}
 
-.sunsetColorOne {
+.pow-Baby {
+  background-image: url('./assets/explode-6.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* glam */
+.glamColorOne {
   border-radius: 10px;
-  background-color: #ff8d0d;
+  background-color: #a239ca;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.sunsetColorOne:focus {
+.glamColorOne:focus {
   outline: none;
 }
 
-.sunsetColorTwo {
+.glamColorTwo {
   border-radius: 10px;
-  background-color: #c90bc1;
+  background-color: #4184f3;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.sunsetColorTwo:focus {
+.glamColorTwo:focus {
   outline: none;
 }
 
-.sunsetColorThree {
+.glamColorThree {
   border-radius: 10px;
-  background-color: #cef90d;
+  background-color: #000000;
 }
-.sunsetColorThree:focus {
+.glamColorThree:focus {
   outline: none;
 }
 
-.sunsetColorFour {
+.glamColorFour {
   border-radius: 10px;
-  background-color: #138ec4;
+  background-color: #4717f6;
 }
-.sunsetColorFour:focus {
+.glamColorFour:focus {
   outline: none;
 }
 
-.sunsetBackground {
-  background: #fc354c;
-  background: -webkit-linear-gradient(#0abfbc, #fc354c);
-  background: -o-linear-gradient(#0abfbc, #fc354c);
-  background: linear-gradient(#0abfbc, #fc354c);
+.glamBackground {
+  background: linear-gradient(to bottom, #e7e0de 30%, #4717f6 30%);
 }
 
-/* Neon */
+.button-Glam {
+  background-color: #a239ca;
+}
 
-.neonColorOne {
+.pow-Glam {
+  background-image: url('./assets/explode-7.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* mod */
+.modColorOne {
   border-radius: 10px;
-  background-color: #ff0040;
+  background-color: #ff533d;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.neonColorOne:focus {
+.modColorOne:focus {
   outline: none;
 }
 
-.neonColorTwo {
+.modColorTwo {
   border-radius: 10px;
-  background-color: #2a26ff;
+  background-color: #4184f3;
   /* width: 32.5px;
   height: 32.5px; */
 }
-.neonColorTwo:focus {
+.modColorTwo:focus {
   outline: none;
 }
 
-.neonColorThree {
+.modColorThree {
   border-radius: 10px;
-  background-color: #fffc00;
+  background-color: #041626;
 }
-.neonColorThree:focus {
+.modColorThree:focus {
   outline: none;
 }
 
-.neonColorFour {
+.modColorFour {
   border-radius: 10px;
-  background-color: #66ff00;
+  background-color: #f5f5f5;
 }
-.neonColorFour:focus {
+.modColorFour:focus {
   outline: none;
 }
 
-.neonBackground {
-  background: #a80077;
-  background: -webkit-linear-gradient(bottom, #66ff00, #a80077);
-  background: -o-linear-gradient(bottom, #66ff00, #a80077);
-  background: linear-gradient(to top, #66ff00, #a80077);
+.modBackground {
+  background: linear-gradient(to bottom, #f5f5f5 30%, #041626 30%);
 }
 
+.button-Mod {
+  background-color: #ff533d;
+}
+
+.pow-Mod {
+  background-image: url('./assets/explode-8.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* pickle */
+.pickleColorOne {
+  border-radius: 10px;
+  background-color: #eeb6b7;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.pickleColorOne:focus {
+  outline: none;
+}
+
+.pickleColorTwo {
+  border-radius: 10px;
+  background-color: #465c8b;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.pickleColorTwo:focus {
+  outline: none;
+}
+
+.pickleColorThree {
+  border-radius: 10px;
+  background-color: #93c178;
+}
+.pickleColorThree:focus {
+  outline: none;
+}
+
+.pickleColorFour {
+  border-radius: 10px;
+  background-color: #4184f3;
+}
+.pickleColorFour:focus {
+  outline: none;
+}
+
+.pickleBackground {
+  background: linear-gradient(to bottom, #f2f2f2 30%, #465c8b 30%);
+}
+
+.button-Pickle {
+  background-color: #93c178;
+}
+
+.pow-Pickle {
+  background-image: url('./assets/explode-4.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* grape */
+.grapeColorOne {
+  border-radius: 10px;
+  background-color: #eeb6b7;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.grapeColorOne:focus {
+  outline: none;
+}
+
+.grapeColorTwo {
+  border-radius: 10px;
+  background-color: #94618e;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.grapeColorTwo:focus {
+  outline: none;
+}
+
+.grapeColorThree {
+  border-radius: 10px;
+  background-color: #4b2a4c;
+}
+.grapeColorThree:focus {
+  outline: none;
+}
+
+.grapeColorFour {
+  border-radius: 10px;
+  background-color: #4184f3;
+}
+.grapeColorFour:focus {
+  outline: none;
+}
+
+.grapeBackground {
+  background: linear-gradient(to bottom, #f8eee7 30%, #4b2a4c 30%);
+}
+
+.button-Grape {
+  background-color: #94618e;
+}
+
+.pow-Grape {
+  background-image: url('./assets/explode-3.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* vitaminC */
+.vitaminCColorOne {
+  border-radius: 10px;
+  background-color: #f7c331;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.vitaminCColorOne:focus {
+  outline: none;
+}
+
+.vitaminCColorTwo {
+  border-radius: 10px;
+  background-color: #6b7a8f;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.vitaminCColorTwo:focus {
+  outline: none;
+}
+
+.vitaminCColorThree {
+  border-radius: 10px;
+  background-color: #f7882f;
+}
+.vitaminCColorThree:focus {
+  outline: none;
+}
+
+.vitaminCColorFour {
+  border-radius: 10px;
+  background-color: #4184f3;
+}
+.vitaminCColorFour:focus {
+  outline: none;
+}
+
+.vitaminCBackground {
+  background: linear-gradient(to bottom, #f7c331 30%, #6b7a8f 30%);
+}
+
+.button-VitaminC {
+  background-color: #f7882f;
+}
+
+.pow-VitaminC {
+  background-image: url('./assets/explode-5.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* berry */
+.berryColorOne {
+  border-radius: 10px;
+  background-color: #eeb6b7;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.berryColorOne:focus {
+  outline: none;
+}
+
+.berryColorTwo {
+  border-radius: 10px;
+  background-color: #e63475;
+  /* width: 32.5px;
+  height: 32.5px; */
+}
+.berryColorTwo:focus {
+  outline: none;
+}
+
+.berryColorThree {
+  border-radius: 10px;
+  background-color: #5f0f4e;
+}
+.berryColorThree:focus {
+  outline: none;
+}
+
+.berryColorFour {
+  border-radius: 10px;
+  background-color: #67aeca;
+}
+.berryColorFour:focus {
+  outline: none;
+}
+
+.berryBackground {
+  background: linear-gradient(to bottom, #e63475 30%, #67aeca 30%);
+}
+
+.button-Berry {
+  background-color: #5f0f4e;
+}
+
+.pow-Berry {
+  background-image: url('./assets/explode-1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
 /* game board*/
 
 .pillgrid {
