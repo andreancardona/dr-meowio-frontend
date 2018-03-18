@@ -7,15 +7,15 @@
 
 # Demo
 
-(https://youtu.be/Dc_FGiS7ZEU)
+[![Dr. Meowio demo video](https://img.youtube.com/vi/https://youtu.be/Dc_FGiS7ZEU/0.jpg)](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
 
 # How To Play
 
-* You may play annonymously or log-in to track your high score.
-* Choose a background theme from the dropdown menu and hit start to begin.
+* You may play anonymously or log-in to track your high score.
+* Choose a background theme from the drop-down menu and hit start to begin.
 * Use arrow keys to move tile left, right or down.
 * Get three tile of the same color in a row to earn points.
-* If the tiles get to the top you lose!
+* If the tiles reach the top you lose!
 
 ### Prerequsites
 
@@ -42,6 +42,5 @@ Navigate to the web address of your Node server http://localhost:3001 (or whatev
 
 ### Additional Info
 
-* You may get a CORS error while running this locally
-* For themes to work locally, you will need to create themes in database that correspond to css classes.
-* For this to work locally you will need to point the fetch requests in the front end at your backend.
+* For clone to work locally, you will need to create themes in database that correspond to css classes.
+* If you like the cat images they are from a web comic called [Doctor Cat](http://doctorcatmd.com/).
