@@ -217,12 +217,17 @@ body {
 
 .player {
   font-family: 'Hind';
+  color: white;
   font-size: 24px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+}
+
+.player-label {
+  color: white;
 }
 
 .hiscores-panel {
