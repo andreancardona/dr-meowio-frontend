@@ -203,6 +203,7 @@ class Bottle extends React.Component {
   makeActivePill = () => {
     return (
       <Pill
+        currentLevel={this.props.currentLevel}
         currentScore={this.props.currentScore}
         setColor={this.setColor}
         toggleActive={this.toggleActive}
@@ -239,37 +240,44 @@ class Bottle extends React.Component {
       this.removeTile(oneAbove);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
       this.removeTile(oneBelow);
       this.removeTile(twoBelow);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
       this.removeTile(oneAbove);
       this.removeTile(twoAbove);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(oneRight);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(twoLeft);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
       this.removeTile(oneRight);
       this.removeTile(twoRight);
       this.removeTile(currentTile);
       this.props.addPoints();
+      this.props.setLevel();
     }
   };
 
   handleMatch = positionArray => {
     this.match(positionArray);
     this.props.addPoints();
+    this.props.setLevel();
   };
 
   // shiftDown = () => {
@@ -378,42 +386,35 @@ class Bottle extends React.Component {
     //Handle End of Game
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
-      console.log('GAME OVER');
-      // const endGameBoard = [...this.state.gameBoard];
-      // endGameBoard.forEach(row =>
-      //   row.forEach(tile => {
-      //     tile.color = this.state.activePillColor;
-      //     tile.status = 'filled';
-      //   })
-      // );
       this.setState({ gameOver: true });
       this.props.updateHiScore();
+      console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
     }
   };
 
+  gameBoardClass = () => (this.state.gameOver ? 'bottle pillgrid game-over' : 'bottle pillgrid');
+
   generateGameBoard = () => {
-    if (this.state.gameOver) {
-      return <div className="bottle pillgrid game-over" />;
-    } else {
-      return (
-        <div className="bottle pillgrid">
-          {this.state.gameBoard.map(row =>
-            row.map(cellObj => {
-              return cellObj.status ? (
-                <StaticPill
-                  key={cellObj.position}
-                  color={cellObj.color}
-                  position={cellObj.position}
-                />
-              ) : null;
-            })
-          )}
-          {this.props.active ? this.makeActivePill() : null}
-        </div>
-      );
-    }
+    return (
+      <div className={this.gameBoardClass()}>
+        {this.state.gameOver
+          ? null
+          : this.state.gameBoard.map(row =>
+              row.map(cellObj => {
+                return cellObj.status ? (
+                  <StaticPill
+                    key={cellObj.position}
+                    color={cellObj.color}
+                    position={cellObj.position}
+                  />
+                ) : null;
+              })
+            )}
+        {this.props.active ? this.makeActivePill() : null}
+      </div>
+    );
   };
 
   render() {

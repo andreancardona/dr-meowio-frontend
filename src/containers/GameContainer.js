@@ -27,6 +27,7 @@ class GameContainer extends React.Component {
     },
     loggedIn: false,
     currentScore: 0,
+    currentLevel: 1,
     hiScores: [],
     users: [],
     themes: [],
@@ -41,14 +42,13 @@ class GameContainer extends React.Component {
   }
 
   updateHiScore = () => {
-    console.log('update!');
     const currentUser = { ...this.state.currentUser };
     this.state.currentScore > currentUser.hiScore
       ? (currentUser.hiScore = this.state.currentScore)
       : currentUser.hiScore;
     console.log(currentUser);
     this.setState({ currentUser: currentUser });
-    fetch(`https://young-ridge-15090.herokuapp.com/${currentUser.id}`, {
+    fetch(`${URLS.users}/${currentUser.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -79,6 +79,32 @@ class GameContainer extends React.Component {
   setTheme = themeName => {
     const currentTheme = this.state.themes.find(theme => theme.name === themeName);
     this.setState({ currentTheme });
+  };
+
+  setLevel = () => {
+    if (this.state.currentScore >= 500 && this.state.currentScore < 1000) {
+      this.setState({ currentLevel: 2 });
+    } else if (this.state.currentScore >= 1000 && this.state.currentScore < 1500) {
+      this.setState({ currentLevel: 3 });
+    } else if (this.state.currentScore >= 1500 && this.state.currentScore < 2000) {
+      this.setState({ currentLevel: 4 });
+    } else if (this.state.currentScore >= 2000 && this.state.currentScore < 2500) {
+      this.setState({ currentLevel: 5 });
+    } else if (this.state.currentScore >= 2500 && this.state.currentScore < 3000) {
+      this.setState({ currentLevel: 6 });
+    } else if (this.state.currentScore >= 3000 && this.state.currentScore < 3500) {
+      this.setState({ currentLevel: 7 });
+    } else if (this.state.currentScore >= 3500 && this.state.currentScore < 4000) {
+      this.setState({ currentLevel: 8 });
+    } else if (this.state.currentScore >= 4000 && this.state.currentScore < 4500) {
+      this.setState({ currentLevel: 9 });
+    } else if (this.state.currentScore >= 4500 && this.state.currentScore < 5000) {
+      this.setState({ currentLevel: 10 });
+    } else if (this.state.currentScore >= 5000) {
+      this.setState({ currentLevel: 11 });
+    } else {
+      this.setState({ currentLevel: 1 });
+    }
   };
 
   colorArray = () => {
@@ -166,6 +192,8 @@ class GameContainer extends React.Component {
           colorArray={this.colorArray()}
           addPoints={this.addPoints}
           active={this.state.active}
+          setLevel={this.setLevel}
+          currentLevel={this.state.currentLevel}
         />
         <button
           className={`start-button button-${this.state.currentTheme.name}`}

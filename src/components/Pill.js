@@ -14,40 +14,60 @@ class Pill extends React.Component {
     }
   };
 
-  //start of speed increase:
-  // componentDidMount() {
-  //   this.props.setColor();
-  //   this.pill.focus();
-  //   // this.interval = setInterval(this.moveDown, 300);
-  //   var interval = 1000;
-  //   const timer = () => {
-  //     interval = interval > 100 ? interval - 100 : 100;
-  //     console.log(interval);
-  //     this.moveDown();
-  //     if (interval >= 50) {
-  //       this.timeOut = setTimeout(timer, interval);
-  //     }
-  //   };
-  //   timer();
-  // }
-  //
-  // componentWillReceiveProps() {
-  //   if (this.props.gameOver === true) {
-  //     clearTimeout(this.timeOut);
-  //   }
-  // }
-
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-    this.interval = setInterval(this.moveDown, 200);
+
+    //handle speed changes based on level
+    var interval = 1000;
+    const timer = () => {
+      interval = this.setPillSpeed();
+      this.moveDown();
+      if (interval >= 50) {
+        this.timeOut = setTimeout(timer, interval);
+      }
+    };
+    if (this.props.gameOver === true) {
+      clearTimeout(this.timeOut);
+    } else {
+      timer();
+    }
   }
 
   componentWillReceiveProps() {
     if (this.props.gameOver === true) {
-      clearInterval(this.interval);
+      clearTimeout(this.timeOut);
     }
   }
+
+  setPillSpeed = () => {
+    switch (this.props.currentLevel) {
+      case 1:
+        return 500;
+      case 2:
+        return 400;
+      case 3:
+        return 300;
+      case 4:
+        return 200;
+      case 5:
+        return 100;
+      case 6:
+        return 80;
+      case 7:
+        return 70;
+      case 8:
+        return 60;
+      case 9:
+        return 50;
+      case 10:
+        return 40;
+      case 11:
+        return 30;
+      default:
+        return 1000;
+    }
+  };
 
   moveLeft = () => {
     const nextTile = this.props.findTileLeft(1);
@@ -75,7 +95,7 @@ class Pill extends React.Component {
   };
 
   render() {
-    return (
+    return this.props.gameOver ? null : (
       <div
         ref={div => {
           this.pill = div;
