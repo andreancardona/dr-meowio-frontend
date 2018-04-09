@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const SessionInfo = props => {
   return (
@@ -11,4 +12,8 @@ const SessionInfo = props => {
   );
 };
 
-export default SessionInfo;
+const mapStateToProps = state => {
+  return { currentTheme: state.currentTheme };
+};
+
+export default connect(mapStateToProps)(SessionInfo);

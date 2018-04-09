@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import HiScoresList from '../components/HiScoresList';
 import Login from '../components/Login';
 import SessionInfo from '../components/SessionInfo';
@@ -132,11 +133,10 @@ class GameContainer extends React.Component {
       <div className={`container ${this.state.currentTheme.background}`}>
         <Header />
         <HiScoresList users={this.state.users} />
-        <DrCat currentTheme={this.state.currentTheme} />
+        <DrCat />
         <SessionInfo
           currentLevel={this.state.currentLevel}
           currentScore={this.state.currentScore}
-          currentTheme={this.state.currentTheme}
         />
         <Bottle
           currentScore={this.state.currentScore}
@@ -148,7 +148,7 @@ class GameContainer extends React.Component {
           currentLevel={this.state.currentLevel}
         />
         <button
-          className={`start-button button-${this.state.currentTheme.name}`}
+          className={`start-button button-${this.props.currentTheme.name}`}
           type="button"
           onClick={this.startGame}
         >
@@ -160,4 +160,8 @@ class GameContainer extends React.Component {
   }
 }
 
-export default GameContainer;
+const mapStateToProps = state => {
+  return { currentTheme: state.currentTheme };
+};
+
+export default connect(mapStateToProps)(GameContainer);
