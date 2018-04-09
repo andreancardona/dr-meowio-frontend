@@ -10,12 +10,6 @@ import URLS from '../urls';
 
 class GameContainer extends React.Component {
   state = {
-    currentUser: {
-      name: 'anonymous',
-      id: 1,
-      hiScore: 0,
-      hiLevel: 1
-    },
     active: false,
     currentTheme: {
       colorOne: 'powColorOne',
@@ -25,7 +19,6 @@ class GameContainer extends React.Component {
       name: 'Pow',
       background: 'powBackground'
     },
-    loggedIn: false,
     currentScore: 0,
     currentLevel: 1,
     hiScores: [],
@@ -37,7 +30,6 @@ class GameContainer extends React.Component {
 
   componentDidMount() {
     this.getThemes();
-    this.getLevels();
     this.getUsers();
   }
 
@@ -76,10 +68,10 @@ class GameContainer extends React.Component {
       .then(json => this.setState({ users: json }));
   };
 
-  setTheme = themeName => {
-    const currentTheme = this.state.themes.find(theme => theme.name === themeName);
-    this.setState({ currentTheme });
-  };
+  // setTheme = themeName => {
+  //   const currentTheme = this.state.themes.find(theme => theme.name === themeName);
+  //   this.setState({ currentTheme });
+  // };
 
   setLevel = () => {
     if (this.state.currentScore >= 500 && this.state.currentScore < 1000) {
@@ -116,41 +108,10 @@ class GameContainer extends React.Component {
     return colorArray;
   };
 
-  getLevels = () => {
-    fetch(URLS.levels)
-      .then(res => res.json())
-      .then(json => this.setState({ levels: json }));
-  };
-
   getUsers = () => {
     fetch(URLS.users)
       .then(res => res.json())
-      .then(json => this.setState({ users: json }, () => this.setDefaultUser()));
-  };
-
-  setDefaultUser = () => {
-    const defaultUser = this.state.users.find(user => {
-      return user.id === 1;
-    });
-    this.setState({
-      currentUser: defaultUser,
-      loggedIn: false,
-      inputValue: ''
-    });
-  };
-
-  setCurrentUser = () => {
-    let currentUser = this.state.users.find(user => {
-      return user.name === this.state.inputValue;
-    });
-    this.setState({
-      currentUser: currentUser
-    });
-    this.setLoggedIn();
-  };
-
-  setLoggedIn = () => {
-    this.setState({ loggedIn: !this.state.loggedIn });
+      .then(json => this.setState({ users: json }));
   };
 
   setInputValue = event => {
@@ -169,20 +130,11 @@ class GameContainer extends React.Component {
   render() {
     return (
       <div className={`container ${this.state.currentTheme.background}`}>
-        <Header currentTheme={this.state.currentTheme} />
+        <Header />
         <HiScoresList users={this.state.users} />
-        <Login
-          currentUser={this.state.currentUser}
-          loggedIn={this.state.loggedIn}
-          inputValue={this.state.inputValue}
-          setInputValue={this.setInputValue}
-          setCurrentUser={this.setCurrentUser}
-          setDefaultUser={this.setDefaultUser}
-          setTheme={this.setTheme}
-        />
         <DrCat currentTheme={this.state.currentTheme} />
         <SessionInfo
-          currentUser={this.state.currentUser}
+          currentLevel={this.state.currentLevel}
           currentScore={this.state.currentScore}
           currentTheme={this.state.currentTheme}
         />
@@ -202,7 +154,7 @@ class GameContainer extends React.Component {
         >
           START
         </button>
-        <ThemeSelector setTheme={this.setTheme} />
+        <ThemeSelector />
       </div>
     );
   }

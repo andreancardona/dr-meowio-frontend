@@ -18,7 +18,7 @@ body {
   grid-template-rows: [a] 165px [b] 423px [c] 77px [d] 70px [e] 94px [f] 500px [end];
 
   /* Responsize Grid Sizes */
-  /* grid-template-columns: [one] 8% [two] 20% [three] 5% [four] 5% [five] 15% [six] 5% [seven] 42%x [end];
+  /* grid-template-columns: [one] 7% [two] 17% [three] 5% [four] 4% [five] 13% [six] 5% [seven] 49%x [end];
   grid-template-rows: [a] 18% [b] 47% [c] 9% [d] 8% [e] 10% [f] 8% [end]; */
 }
 /* Sections */
@@ -215,7 +215,7 @@ body {
   padding-top: 0px;
 }
 
-.player {
+.level {
   font-family: 'Hind';
   color: white;
   font-size: 24px;
@@ -226,7 +226,7 @@ body {
   letter-spacing: normal;
 }
 
-.player-label {
+.level-label {
   color: white;
 }
 
