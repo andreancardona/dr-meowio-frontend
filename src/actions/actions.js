@@ -3,6 +3,7 @@ import ThemeAPI from '../services/themeAPI.js';
 export const SET_THEME = 'SET_THEME';
 export const TOGGLE_ACTIVE = 'TOGGLE_ACTIVE';
 export const START_GAME = 'START_GAME';
+export const ADD_POINTS = 'ADD_POINTS';
 
 export const setTheme = themeId => {
   return function(dispatch) {
@@ -18,4 +19,8 @@ export const toggleActive = () => {
 
 export const startGame = () => {
   return { type: START_GAME };
+};
+
+export const addPoints = () => {
+  return { type: ADD_POINTS };
 };

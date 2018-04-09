@@ -12,8 +12,6 @@ import URLS from '../urls';
 
 class GameContainer extends React.Component {
   state = {
-    active: false,
-    currentScore: 0,
     currentLevel: 1,
     hiScores: [],
     users: [],
@@ -29,8 +27,8 @@ class GameContainer extends React.Component {
 
   updateHiScore = () => {
     const currentUser = { ...this.state.currentUser };
-    this.state.currentScore > currentUser.hiScore
-      ? (currentUser.hiScore = this.state.currentScore)
+    this.props.currentScore > currentUser.hiScore
+      ? (currentUser.hiScore = this.props.currentScore)
       : currentUser.hiScore;
     console.log(currentUser);
     this.setState({ currentUser: currentUser });
@@ -44,7 +42,7 @@ class GameContainer extends React.Component {
     }).then(response => this.refreshUsers());
   };
 
-  addPoints = () => this.setState({ currentScore: this.state.currentScore + 100 });
+  // addPoints = () => this.setState({ currentScore: this.props.currentScore + 100 });
 
   getThemes = () => {
     fetch(URLS.themes)
@@ -63,25 +61,25 @@ class GameContainer extends React.Component {
   };
 
   setLevel = () => {
-    if (this.state.currentScore >= 500 && this.state.currentScore < 1000) {
+    if (this.props.currentScore >= 500 && this.props.currentScore < 1000) {
       this.setState({ currentLevel: 2 });
-    } else if (this.state.currentScore >= 1000 && this.state.currentScore < 1500) {
+    } else if (this.props.currentScore >= 1000 && this.props.currentScore < 1500) {
       this.setState({ currentLevel: 3 });
-    } else if (this.state.currentScore >= 1500 && this.state.currentScore < 2000) {
+    } else if (this.props.currentScore >= 1500 && this.props.currentScore < 2000) {
       this.setState({ currentLevel: 4 });
-    } else if (this.state.currentScore >= 2000 && this.state.currentScore < 2500) {
+    } else if (this.props.currentScore >= 2000 && this.props.currentScore < 2500) {
       this.setState({ currentLevel: 5 });
-    } else if (this.state.currentScore >= 2500 && this.state.currentScore < 3000) {
+    } else if (this.props.currentScore >= 2500 && this.props.currentScore < 3000) {
       this.setState({ currentLevel: 6 });
-    } else if (this.state.currentScore >= 3000 && this.state.currentScore < 3500) {
+    } else if (this.props.currentScore >= 3000 && this.props.currentScore < 3500) {
       this.setState({ currentLevel: 7 });
-    } else if (this.state.currentScore >= 3500 && this.state.currentScore < 4000) {
+    } else if (this.props.currentScore >= 3500 && this.props.currentScore < 4000) {
       this.setState({ currentLevel: 8 });
-    } else if (this.state.currentScore >= 4000 && this.state.currentScore < 4500) {
+    } else if (this.props.currentScore >= 4000 && this.props.currentScore < 4500) {
       this.setState({ currentLevel: 9 });
-    } else if (this.state.currentScore >= 4500 && this.state.currentScore < 5000) {
+    } else if (this.props.currentScore >= 4500 && this.props.currentScore < 5000) {
       this.setState({ currentLevel: 10 });
-    } else if (this.state.currentScore >= 5000) {
+    } else if (this.props.currentScore >= 5000) {
       this.setState({ currentLevel: 11 });
     } else {
       this.setState({ currentLevel: 1 });
@@ -106,14 +104,9 @@ class GameContainer extends React.Component {
         <Header />
         <HiScoresList users={this.state.users} />
         <DrCat />
-        <SessionInfo
-          currentLevel={this.state.currentLevel}
-          currentScore={this.state.currentScore}
-        />
+        <SessionInfo currentLevel={this.state.currentLevel} />
         <Bottle
-          currentScore={this.state.currentScore}
           updateHiScore={this.updateHiScore}
-          addPoints={this.addPoints}
           setLevel={this.setLevel}
           currentLevel={this.state.currentLevel}
         />
@@ -131,7 +124,7 @@ class GameContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { currentTheme: state.currentTheme };
+  return { currentTheme: state.currentTheme, currentScore: state.currentScore };
 };
 
 const mapDispatchToProps = dispatch => {

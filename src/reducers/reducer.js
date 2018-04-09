@@ -1,7 +1,8 @@
-import { SET_THEME, TOGGLE_ACTIVE, START_GAME } from '../actions/actions';
+import { SET_THEME, TOGGLE_ACTIVE, START_GAME, ADD_POINTS } from '../actions/actions';
 
 const defaultState = {
   active: false,
+  currentScore: 0,
   currentTheme: {
     colorOne: 'powColorOne',
     colorTwo: 'powColorTwo',
@@ -20,6 +21,8 @@ const meowReducer = (state = defaultState, action) => {
       return { ...state, active: !state.active };
     case START_GAME:
       return { ...state, active: !state.active };
+    case ADD_POINTS:
+      return { ...state, currentScore: state.currentScore + 100 };
 
     default:
       return state;

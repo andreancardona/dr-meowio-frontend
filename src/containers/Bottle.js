@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addPoints } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -247,44 +248,44 @@ class Bottle extends React.Component {
       this.removeTile(oneBelow);
       this.removeTile(oneAbove);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
       this.removeTile(oneBelow);
       this.removeTile(twoBelow);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
       this.removeTile(oneAbove);
       this.removeTile(twoAbove);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(oneRight);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(twoLeft);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
       this.removeTile(oneRight);
       this.removeTile(twoRight);
       this.removeTile(currentTile);
-      this.props.addPoints();
+      this.props.dispatchAddPoints();
       this.props.setLevel();
     }
   };
 
   handleMatch = positionArray => {
     this.match(positionArray);
-    this.props.addPoints();
+    this.props.dispatchAddPoints();
     this.props.setLevel();
   };
 
@@ -431,7 +432,17 @@ class Bottle extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { currentTheme: state.currentTheme, active: state.active };
+  return {
+    currentTheme: state.currentTheme,
+    currentScore: state.currentScore,
+    active: state.active
+  };
 };
 
-export default connect(mapStateToProps)(Bottle);
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchAddPoints: () => dispatch(addPoints())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bottle);

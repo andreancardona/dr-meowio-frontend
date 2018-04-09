@@ -13,7 +13,7 @@ const SessionInfo = props => {
 };
 
 const mapStateToProps = state => {
-  return { currentTheme: state.currentTheme };
+  return { currentTheme: state.currentTheme, currentScore: state.currentScore };
 };
 
 export default connect(mapStateToProps)(SessionInfo);
