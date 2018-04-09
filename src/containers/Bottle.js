@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -193,10 +194,18 @@ class Bottle extends React.Component {
 
   rowIndex = letter => this.rowNames.indexOf(letter);
 
+  setColorArray = () => {
+    const colorArray = [];
+    colorArray.push(this.props.currentTheme.colorOne);
+    colorArray.push(this.props.currentTheme.colorTwo);
+    colorArray.push(this.props.currentTheme.colorThree);
+    colorArray.push(this.props.currentTheme.colorFour);
+    return colorArray;
+  };
+
   setColor = () => {
-    const activePillColor = this.props.colorArray[
-      Math.floor(Math.random() * this.props.colorArray.length)
-    ];
+    const colorArray = this.setColorArray();
+    const activePillColor = colorArray[Math.floor(Math.random() * colorArray.length)];
     this.setState({ activePillColor: activePillColor });
   };
 
@@ -206,7 +215,6 @@ class Bottle extends React.Component {
         currentLevel={this.props.currentLevel}
         currentScore={this.props.currentScore}
         setColor={this.setColor}
-        toggleActive={this.toggleActive}
         stopPill={this.stopPill}
         gameOver={this.state.gameOver}
         color={this.state.activePillColor}
@@ -421,4 +429,9 @@ class Bottle extends React.Component {
     return this.generateGameBoard();
   }
 }
-export default Bottle;
+
+const mapStateToProps = state => {
+  return { currentTheme: state.currentTheme, active: state.active };
+};
+
+export default connect(mapStateToProps)(Bottle);

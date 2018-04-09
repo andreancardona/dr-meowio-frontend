@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { startGame } from '../actions/actions';
 import HiScoresList from '../components/HiScoresList';
 import Login from '../components/Login';
 import SessionInfo from '../components/SessionInfo';
@@ -12,14 +13,6 @@ import URLS from '../urls';
 class GameContainer extends React.Component {
   state = {
     active: false,
-    currentTheme: {
-      colorOne: 'powColorOne',
-      colorTwo: 'powColorTwo',
-      colorThree: 'powColorThree',
-      colorFour: 'powColorFour',
-      name: 'Pow',
-      background: 'powBackground'
-    },
     currentScore: 0,
     currentLevel: 1,
     hiScores: [],
@@ -69,11 +62,6 @@ class GameContainer extends React.Component {
       .then(json => this.setState({ users: json }));
   };
 
-  // setTheme = themeName => {
-  //   const currentTheme = this.state.themes.find(theme => theme.name === themeName);
-  //   this.setState({ currentTheme });
-  // };
-
   setLevel = () => {
     if (this.state.currentScore >= 500 && this.state.currentScore < 1000) {
       this.setState({ currentLevel: 2 });
@@ -100,15 +88,6 @@ class GameContainer extends React.Component {
     }
   };
 
-  colorArray = () => {
-    const colorArray = [];
-    colorArray.push(this.state.currentTheme.colorOne);
-    colorArray.push(this.state.currentTheme.colorTwo);
-    colorArray.push(this.state.currentTheme.colorThree);
-    colorArray.push(this.state.currentTheme.colorFour);
-    return colorArray;
-  };
-
   getUsers = () => {
     fetch(URLS.users)
       .then(res => res.json())
@@ -121,16 +100,9 @@ class GameContainer extends React.Component {
     });
   };
 
-  startGame = () => {
-    this.setState({
-      active: !this.state.active
-    });
-    console.log('STARRRRRTTT!!!!');
-  };
-
   render() {
     return (
-      <div className={`container ${this.state.currentTheme.background}`}>
+      <div className={`container ${this.props.currentTheme.background}`}>
         <Header />
         <HiScoresList users={this.state.users} />
         <DrCat />
@@ -141,16 +113,14 @@ class GameContainer extends React.Component {
         <Bottle
           currentScore={this.state.currentScore}
           updateHiScore={this.updateHiScore}
-          colorArray={this.colorArray()}
           addPoints={this.addPoints}
-          active={this.state.active}
           setLevel={this.setLevel}
           currentLevel={this.state.currentLevel}
         />
         <button
           className={`start-button button-${this.props.currentTheme.name}`}
           type="button"
-          onClick={this.startGame}
+          onClick={this.props.dispatchStartGame}
         >
           START
         </button>
@@ -164,4 +134,10 @@ const mapStateToProps = state => {
   return { currentTheme: state.currentTheme };
 };
 
-export default connect(mapStateToProps)(GameContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchStartGame: () => dispatch(startGame())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);
