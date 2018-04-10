@@ -1,37 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getHighScores } from '../actions/actions';
 
-const HiScoresList = props => {
-  //console.log(props.users); //returns an array
-  const hiScores = () => {
-    const sortedUsers = props.users.sort((a, b) => {
-      //sort array
-      if (b.hiScore < a.hiScore) {
-        return -1;
-      } else if (a.hiScore < b.hiScore) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-    const cleanSortedUsers = sortedUsers.filter(user => {
-      return user.name !== 'anonymous';
-    });
-    return cleanSortedUsers.slice(0, 5); //returns sorted array
-  };
-  return (
-    <div className="hiscores-panel">
-      <p>High Scores</p>
-      <ol>
-        {hiScores().map((
-          user //map and return user scores
-        ) => (
-          <li key={user.id} className="hiscore-text">
-            {user.name}: {user.hiScore}
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
+class HiScoresList extends React.Component {
+  componentDidMount() {
+    this.props.dispatchGetHighScores();
+  }
+
+  render() {
+    return (
+      <div className="hiscores-panel">
+        <p>High Scores</p>
+        <ol>
+          {this.props.highScores.map(highScore => {
+            return (
+              <li key={highScore.id} className="hiscore-text">
+                {highScore.initials} {highScore.score}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return { highScores: state.highScores };
 };
 
-export default HiScoresList;
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchGetHighScores: () => dispatch(getHighScores())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HiScoresList);

@@ -11,15 +11,6 @@ import ThemeSelector from '../components/ThemeSelector';
 import URLS from '../urls';
 
 class GameContainer extends React.Component {
-  state = {
-    hiScores: [],
-    users: []
-  };
-
-  componentDidMount() {
-    this.getUsers();
-  }
-
   updateHiScore = () => {
     const currentUser = { ...this.state.currentUser };
     this.props.currentScore > currentUser.hiScore
@@ -37,23 +28,11 @@ class GameContainer extends React.Component {
     }).then(response => this.refreshUsers());
   };
 
-  refreshUsers = () => {
-    fetch(URLS.users)
-      .then(res => res.json())
-      .then(json => this.setState({ users: json }));
-  };
-
-  getUsers = () => {
-    fetch(URLS.users)
-      .then(res => res.json())
-      .then(json => this.setState({ users: json }));
-  };
-
   render() {
     return (
       <div className={`container ${this.props.currentTheme.background}`}>
         <Header />
-        <HiScoresList users={this.state.users} />
+        <HiScoresList />
         <DrCat />
         <SessionInfo />
         <Bottle updateHiScore={this.updateHiScore} />

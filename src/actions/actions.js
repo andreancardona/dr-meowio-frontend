@@ -1,4 +1,5 @@
 import ThemeAPI from '../services/themeAPI.js';
+import HighScoreAPI from '../services/highscoreAPI.js';
 import UserAPI from '../services/userAPI.js';
 
 export const SET_THEME = 'SET_THEME';
@@ -18,11 +19,20 @@ export const setTheme = themeId => {
 
 export const getHighScores = () => {
   return function(dispatch) {
-    UserAPI.getTopTen().then(highscores => {
+    HighScoreAPI.getTopTen().then(highscores => {
+      console.log(highscores);
       dispatch({ type: GET_HIGHSCORES, payload: highscores });
     });
   };
 };
+
+// export const getHighScores = () => {
+//   return function(dispatch) {
+//     UserAPI.getTopTen().then(highscores => {
+//       dispatch({ type: GET_HIGHSCORES, payload: highscores });
+//     });
+//   };
+// };
 
 //toggleActive might be redundant with start game.
 export const toggleActive = () => {
