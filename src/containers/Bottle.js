@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPoints } from '../actions/actions';
+import { addPoints, setLevel } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -249,44 +249,44 @@ class Bottle extends React.Component {
       this.removeTile(oneAbove);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
       this.removeTile(oneBelow);
       this.removeTile(twoBelow);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
       this.removeTile(oneAbove);
       this.removeTile(twoAbove);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(oneRight);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(twoLeft);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
       this.removeTile(oneRight);
       this.removeTile(twoRight);
       this.removeTile(currentTile);
       this.props.dispatchAddPoints();
-      this.props.setLevel();
+      this.props.dispatchSetLevel(this.props.currentScore);
     }
   };
 
   handleMatch = positionArray => {
     this.match(positionArray);
     this.props.dispatchAddPoints();
-    this.props.setLevel();
+    this.props.dispatchSetLevel(this.props.currentScore);
   };
 
   // shiftDown = () => {
@@ -441,7 +441,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchAddPoints: () => dispatch(addPoints())
+    dispatchAddPoints: () => dispatch(addPoints()),
+    dispatchSetLevel: currentScore => dispatch(setLevel(currentScore))
   };
 };
 

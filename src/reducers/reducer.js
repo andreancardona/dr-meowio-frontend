@@ -1,8 +1,16 @@
-import { SET_THEME, TOGGLE_ACTIVE, START_GAME, ADD_POINTS } from '../actions/actions';
+import {
+  SET_THEME,
+  SET_LEVEL,
+  TOGGLE_ACTIVE,
+  START_GAME,
+  ADD_POINTS,
+  GET_HIGHSCORES
+} from '../actions/actions';
 
 const defaultState = {
   active: false,
   currentScore: 0,
+  currentLevel: 1,
   currentTheme: {
     colorOne: 'powColorOne',
     colorTwo: 'powColorTwo',
@@ -10,7 +18,8 @@ const defaultState = {
     colorFour: 'powColorFour',
     name: 'Pow',
     background: 'powBackground'
-  }
+  },
+  highScores: []
 };
 
 const meowReducer = (state = defaultState, action) => {
@@ -23,6 +32,10 @@ const meowReducer = (state = defaultState, action) => {
       return { ...state, active: !state.active };
     case ADD_POINTS:
       return { ...state, currentScore: state.currentScore + 100 };
+    case SET_LEVEL:
+      return { ...state, currentLevel: action.payload };
+    case GET_HIGHSCORES:
+      return { ...state, highScores: action.payload };
 
     default:
       return state;
