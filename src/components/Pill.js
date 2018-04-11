@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Pill extends React.Component {
   handleKeyPress = event => {
@@ -108,4 +109,12 @@ class Pill extends React.Component {
   }
 }
 
-export default Pill;
+const mapStateToProps = state => {
+  return {
+    gameOver: state.gameOver,
+    currentLevel: state.currentLevel,
+    currentScore: state.currentScore
+  };
+};
+
+export default connect(mapStateToProps)(Pill);

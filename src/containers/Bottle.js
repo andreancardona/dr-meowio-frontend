@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPoints, setLevel } from '../actions/actions';
+import { addPoints, setLevel, gameOver } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -8,7 +8,6 @@ class Bottle extends React.Component {
   state = {
     activePillColor: '',
     activePillPosition: 'a4',
-    gameOver: false,
     gameBoard: [
       [
         // a
@@ -189,9 +188,7 @@ class Bottle extends React.Component {
     ]
   };
 
-  rowNames = (() => {
-    return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-  })();
+  rowNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 
   rowIndex = letter => this.rowNames.indexOf(letter);
 
@@ -213,11 +210,8 @@ class Bottle extends React.Component {
   makeActivePill = () => {
     return (
       <Pill
-        currentLevel={this.props.currentLevel}
-        currentScore={this.props.currentScore}
         setColor={this.setColor}
         stopPill={this.stopPill}
-        gameOver={this.state.gameOver}
         color={this.state.activePillColor}
         gameBoard={this.state.gameBoard}
         updateActivePillPosition={this.updateActivePillPosition}
@@ -395,7 +389,7 @@ class Bottle extends React.Component {
     //Handle End of Game
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
-      this.setState({ gameOver: true });
+      this.props.dispatchGameOver();
       this.props.updateHiScore();
       console.log('GAMEOVER!');
     } else {
@@ -403,12 +397,12 @@ class Bottle extends React.Component {
     }
   };
 
-  gameBoardClass = () => (this.state.gameOver ? 'bottle pillgrid game-over' : 'bottle pillgrid');
+  gameBoardClass = () => (this.props.gameOver ? 'bottle pillgrid game-over' : 'bottle pillgrid');
 
   generateGameBoard = () => {
     return (
       <div className={this.gameBoardClass()}>
-        {this.state.gameOver
+        {this.props.gameOver
           ? null
           : this.state.gameBoard.map(row =>
               row.map(cellObj => {
@@ -435,14 +429,16 @@ const mapStateToProps = state => {
   return {
     currentTheme: state.currentTheme,
     currentScore: state.currentScore,
-    active: state.active
+    active: state.active,
+    gameOver: state.gameOver
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     dispatchAddPoints: () => dispatch(addPoints()),
-    dispatchSetLevel: currentScore => dispatch(setLevel(currentScore))
+    dispatchSetLevel: currentScore => dispatch(setLevel(currentScore)),
+    dispatchGameOver: () => dispatch(gameOver())
   };
 };
 

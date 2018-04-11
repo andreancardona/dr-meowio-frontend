@@ -8,6 +8,7 @@ export const START_GAME = 'START_GAME';
 export const ADD_POINTS = 'ADD_POINTS';
 export const SET_LEVEL = 'SET_LEVEL';
 export const GET_HIGHSCORES = 'SET_HIGHSCORES';
+export const TOGGLE_GAME_OVER = 'TOGGLE_GAME_OVER';
 
 export const setTheme = themeId => {
   return function(dispatch) {
@@ -26,14 +27,6 @@ export const getHighScores = () => {
   };
 };
 
-// export const getHighScores = () => {
-//   return function(dispatch) {
-//     UserAPI.getTopTen().then(highscores => {
-//       dispatch({ type: GET_HIGHSCORES, payload: highscores });
-//     });
-//   };
-// };
-
 //toggleActive might be redundant with start game.
 export const toggleActive = () => {
   return { type: TOGGLE_ACTIVE };
@@ -45,6 +38,10 @@ export const startGame = () => {
 
 export const addPoints = () => {
   return { type: ADD_POINTS };
+};
+
+export const gameOver = () => {
+  return { type: TOGGLE_GAME_OVER };
 };
 
 export const setLevel = currentScore => {

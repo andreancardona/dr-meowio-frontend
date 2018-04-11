@@ -60,3 +60,5 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);
+
+//TODO: once highscore modal is restructured update will need to move to game over I think.
