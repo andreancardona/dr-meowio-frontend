@@ -89,6 +89,7 @@ class Pill extends React.Component {
     const nextTile = this.props.findTileBelow(1);
     const currentRow = this.props.activePillPosition.split('')[0];
     if (currentRow === 'p' || nextTile.status === 'filled') {
+      //TODO:  STOP PILL NOT WORKING SO GAME OVER IS INFINITE RUNNING!!!!
       this.props.stopPill();
     } else {
       this.props.updateActivePillPosition(nextTile.position);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPoints, setLevel, gameOver } from '../actions/actions';
+import { addPoints, setLevel, updateHighScores, gameOver } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -389,8 +389,9 @@ class Bottle extends React.Component {
     //Handle End of Game
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
+      //TODO:  STOP PILL NOT WORKING SO GAME OVER IS INFINITE RUNNING!!!!
       this.props.dispatchGameOver();
-      this.props.updateHiScore();
+      // this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
       console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
@@ -430,7 +431,8 @@ const mapStateToProps = state => {
     currentTheme: state.currentTheme,
     currentScore: state.currentScore,
     active: state.active,
-    gameOver: state.gameOver
+    gameOver: state.gameOver,
+    initials: state.initials
   };
 };
 
@@ -438,6 +440,8 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatchAddPoints: () => dispatch(addPoints()),
     dispatchSetLevel: currentScore => dispatch(setLevel(currentScore)),
+    dispatchUpdateHighScores: (currentScore, initials) =>
+      dispatch(updateHighScores(currentScore, initials)),
     dispatchGameOver: () => dispatch(gameOver())
   };
 };

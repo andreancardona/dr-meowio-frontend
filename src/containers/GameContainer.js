@@ -11,23 +11,6 @@ import ThemeSelector from '../components/ThemeSelector';
 import URLS from '../urls';
 
 class GameContainer extends React.Component {
-  updateHiScore = () => {
-    const currentUser = { ...this.state.currentUser };
-    this.props.currentScore > currentUser.hiScore
-      ? (currentUser.hiScore = this.props.currentScore)
-      : currentUser.hiScore;
-    console.log(currentUser);
-    this.setState({ currentUser: currentUser });
-    fetch(`${URLS.users}/${currentUser.id}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'PATCH',
-      body: JSON.stringify(currentUser)
-    }).then(response => this.refreshUsers());
-  };
-
   render() {
     return (
       <div className={`container ${this.props.currentTheme.background}`}>
@@ -35,7 +18,7 @@ class GameContainer extends React.Component {
         <HiScoresList />
         <DrCat />
         <SessionInfo />
-        <Bottle updateHiScore={this.updateHiScore} />
+        <Bottle />
         <button
           className={`start-button button-${this.props.currentTheme.name}`}
           type="button"
@@ -60,5 +43,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameContainer);
-
-//TODO: once highscore modal is restructured update will need to move to game over I think.
