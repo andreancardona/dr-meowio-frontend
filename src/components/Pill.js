@@ -18,21 +18,7 @@ class Pill extends React.Component {
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
-
-    //handle speed changes based on level
-    var interval = 1000;
-    const timer = () => {
-      interval = this.setPillSpeed();
-      this.moveDown();
-      if (interval >= 50) {
-        this.timeOut = setTimeout(timer, interval);
-      }
-    };
-    if (this.props.gameOver === true) {
-      clearTimeout(this.timeOut);
-    } else {
-      timer();
-    }
+    this.timeOut = setTimeout(this.timer, this.setPillSpeed());
   }
 
   componentWillReceiveProps() {
@@ -40,6 +26,14 @@ class Pill extends React.Component {
       clearTimeout(this.timeOut);
     }
   }
+
+  timer = () => {
+    const interval = this.setPillSpeed();
+    this.moveDown();
+    if (interval >= 50) {
+      this.timeOut = setTimeout(this.timer, interval);
+    }
+  };
 
   setPillSpeed = () => {
     switch (this.props.currentLevel) {
@@ -89,7 +83,6 @@ class Pill extends React.Component {
     const nextTile = this.props.findTileBelow(1);
     const currentRow = this.props.activePillPosition.split('')[0];
     if (currentRow === 'p' || nextTile.status === 'filled') {
-      //TODO:  STOP PILL NOT WORKING SO GAME OVER IS INFINITE RUNNING!!!!
       this.props.stopPill();
     } else {
       this.props.updateActivePillPosition(nextTile.position);

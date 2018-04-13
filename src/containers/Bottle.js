@@ -283,24 +283,6 @@ class Bottle extends React.Component {
     this.props.dispatchSetLevel(this.props.currentScore);
   };
 
-  // shiftDown = () => {
-  //   const newGameBoard = [...this.state.gameBoard];
-  //   newGameBoard.forEach(row =>
-  //     row.forEach(tile => {
-  //       let belowTile = this.findTileBelow(1);
-  //       if (!belowTile.status && tile.position !== 'a4') {
-  //         const rowBelow = belowTile.position.split('')[0];
-  //         const colBelow = belowTile.position.split('')[1];
-  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].status = tile.status;
-  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].color = tile.color;
-  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].status = null;
-  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].color = null;
-  //       }
-  //     })
-  //   );
-  //   this.setState({ gameBoard: newGameBoard });
-  // };
-
   removeTile = tile => {
     tile.color = null;
     tile.status = null;
@@ -311,7 +293,7 @@ class Bottle extends React.Component {
     const column = parseInt(positionArray[1], 10);
     newGameBoard[rowIdx][column - 1] = tile;
     this.setState({ gameBoard: newGameBoard });
-    // this.shiftDown();
+    // TODO:  add function to shift all tiles down to fill gaps
   };
 
   findTile = position => {
@@ -389,10 +371,9 @@ class Bottle extends React.Component {
     //Handle End of Game
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
-      //TODO:  STOP PILL NOT WORKING SO GAME OVER IS INFINITE RUNNING!!!!
       this.props.dispatchGameOver();
-      // this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
-      console.log('GAMEOVER!');
+      this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
+      // console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
     }
