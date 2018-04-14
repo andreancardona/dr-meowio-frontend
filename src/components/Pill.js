@@ -28,6 +28,7 @@ class Pill extends React.Component {
   componentWillUnmount() {
     console.log('unmount');
     clearInterval(this.state.interval);
+    this.setState({ interval: '' });
     console.log(this.state.interval);
   }
 

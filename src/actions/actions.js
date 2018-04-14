@@ -9,6 +9,7 @@ export const ADD_POINTS = 'ADD_POINTS';
 export const SET_LEVEL = 'SET_LEVEL';
 export const GET_HIGHSCORES = 'SET_HIGHSCORES';
 export const GAME_OVER = 'GAME_OVER';
+export const SET_INITIALS = 'SET_INITIALS';
 
 export const setTheme = themeId => {
   return function(dispatch) {
@@ -19,6 +20,7 @@ export const setTheme = themeId => {
 };
 
 export const getHighScores = () => {
+  console.log('get');
   return function(dispatch) {
     HighScoreAPI.getTopTen().then(highscores => {
       console.log(highscores);
@@ -28,6 +30,7 @@ export const getHighScores = () => {
 };
 
 export const updateHighScores = (currentScore, initials) => {
+  console.log('update');
   return function(dispatch) {
     HighScoreAPI.updateTopTen(currentScore, initials).then(highscores => {
       console.log(highscores);
@@ -39,6 +42,10 @@ export const updateHighScores = (currentScore, initials) => {
 //toggleActive might be redundant with start game.
 export const toggleActive = () => {
   return { type: TOGGLE_ACTIVE };
+};
+
+export const setInitials = userInput => {
+  return { type: SET_INITIALS, payload: userInput };
 };
 
 export const startGame = () => {

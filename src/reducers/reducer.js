@@ -22,8 +22,7 @@ const defaultState = {
     background: 'powBackground'
   },
   gameOver: false,
-  highScores: [],
-  initials: '???'
+  highScores: []
 };
 
 const meowReducer = (state = defaultState, action) => {
@@ -42,7 +41,6 @@ const meowReducer = (state = defaultState, action) => {
       return { ...state, currentLevel: action.payload };
     case GET_HIGHSCORES:
       return { ...state, highScores: action.payload };
-
     default:
       return state;
   }

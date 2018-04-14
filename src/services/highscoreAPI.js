@@ -2,11 +2,11 @@ import BASE_URL from '../urls.js';
 
 class HighScoreAPI {
   static getTopTen() {
-    return fetch(`http://localhost:3000/highscores`).then(res => res.json());
+    return fetch(BASE_URL.highscores).then(res => res.json());
   }
 
   static updateTopTen(currentScore, initials) {
-    return fetch(`http://localhost:3000/highscores`, {
+    return fetch(BASE_URL.highscores, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

@@ -372,7 +372,7 @@ class Bottle extends React.Component {
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
       this.props.dispatchGameOver();
-      this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
+      // this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
       // console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
@@ -412,8 +412,7 @@ const mapStateToProps = state => {
     currentTheme: state.currentTheme,
     currentScore: state.currentScore,
     active: state.active,
-    gameOver: state.gameOver,
-    initials: state.initials
+    gameOver: state.gameOver
   };
 };
 
@@ -421,8 +420,6 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatchAddPoints: () => dispatch(addPoints()),
     dispatchSetLevel: currentScore => dispatch(setLevel(currentScore)),
-    dispatchUpdateHighScores: (currentScore, initials) =>
-      dispatch(updateHighScores(currentScore, initials)),
     dispatchGameOver: () => dispatch(gameOver())
   };
 };
