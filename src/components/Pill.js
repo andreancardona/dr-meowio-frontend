@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Pill extends React.Component {
-  state = {
-    interval: ''
-  };
-
   handleKeyPress = event => {
     event.preventDefault();
     if (!this.props.gameOver) {
@@ -20,24 +16,21 @@ class Pill extends React.Component {
   };
 
   componentDidMount() {
+    console.log('didmount');
     this.props.setColor();
     this.pill.focus();
     this.timer();
   }
 
   componentWillUnmount() {
-    console.log('unmount');
-    clearInterval(this.state.interval);
-    this.setState({ interval: '' });
-    console.log(this.state.interval);
+    clearTimeout(this.tick);
   }
 
   timer = () => {
-    const interval = this.setPillSpeed();
     this.moveDown();
-    if (interval >= 50) {
-      this.setState({ interval: setTimeout(this.timer, interval) });
-    }
+    clearTimeout(this.tick);
+    this.tick = setTimeout(this.timer, this.setPillSpeed());
+    console.log('boop');
   };
 
   setPillSpeed = () => {
