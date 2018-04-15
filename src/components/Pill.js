@@ -16,7 +16,6 @@ class Pill extends React.Component {
   };
 
   componentDidMount() {
-    console.log('didmount');
     this.props.setColor();
     this.pill.focus();
     this.timer();
@@ -30,7 +29,6 @@ class Pill extends React.Component {
     this.moveDown();
     clearTimeout(this.tick);
     this.tick = setTimeout(this.timer, this.setPillSpeed());
-    console.log('boop');
   };
 
   setPillSpeed = () => {
