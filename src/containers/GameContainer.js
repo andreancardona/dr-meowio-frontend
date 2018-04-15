@@ -15,7 +15,6 @@ class GameContainer extends React.Component {
     return (
       <div className={`container ${this.props.currentTheme.background}`}>
         <Header />
-        <HiScoresList />
         <DrCat />
         <SessionInfo />
         <Bottle />

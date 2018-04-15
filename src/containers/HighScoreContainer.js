@@ -4,7 +4,7 @@ import { setInitials, updateHighScores, getHighScores } from '../actions/actions
 
 class HighScoreContainer extends Component {
   state = {
-    input: '???'
+    input: ''
   };
 
   componentDidMount() {
@@ -17,21 +17,23 @@ class HighScoreContainer extends Component {
 
   render() {
     return (
-      <div className={`container ${this.props.currentTheme.background}`}>
-        <h1> High Scores</h1>
-        <ol>
+      <div className={`gameover-${this.props.currentTheme.name}`}>
+        <h1 className="highscore-title">High Scores</h1>
+        <ol className="highscore-list">
           {this.props.highScores.map((highscore, i) => {
             return (
               <li key={i}>
-                <span>{highscore.initials}</span>
-                <span>{highscore.score}</span>
+                <span className="place-span">{i + 1}.</span>
+                <span className="init-span">{highscore.initials}</span>
+                <span className="points-span">{highscore.score}</span>
               </li>
             );
           })}
         </ol>
         <div>
           <input
-            className="login-input"
+            className="login-input highscore-input"
+            placeholder="Enter Your Initials"
             onChange={event => this.handleInput(event.target.value)}
             type="text"
             name="login"
@@ -40,6 +42,7 @@ class HighScoreContainer extends Component {
             maxLength="3"
           />
           <button
+            className={`highscore-button start-button button-${this.props.currentTheme.name}`}
             onClick={() => {
               this.props.dispatchUpdateHighScores(this.props.currentScore, this.state.input);
             }}
