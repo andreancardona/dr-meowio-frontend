@@ -24,7 +24,7 @@ class Pill extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.tick);
   }
-
+  //TODO: This interval is still not finishing correctly.
   timer = () => {
     this.moveDown();
     clearTimeout(this.tick);

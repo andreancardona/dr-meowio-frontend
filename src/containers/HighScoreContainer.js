@@ -4,7 +4,8 @@ import { setInitials, updateHighScores, getHighScores } from '../actions/actions
 
 class HighScoreContainer extends Component {
   state = {
-    input: ''
+    input: '',
+    submited: false
   };
 
   componentDidMount() {
@@ -13,6 +14,14 @@ class HighScoreContainer extends Component {
 
   handleInput = input => {
     this.setState({ input: input.toUpperCase() });
+  };
+
+  refreshPage = () => {
+    window.location.reload();
+  };
+  submitHighScore = () => {
+    this.setState({ submited: true });
+    this.props.dispatchUpdateHighScores(this.props.currentScore, this.state.input);
   };
 
   render() {
@@ -41,15 +50,23 @@ class HighScoreContainer extends Component {
             autoComplete="off"
             maxLength="3"
           />
-          <button
-            className={`highscore-button start-button button-${this.props.currentTheme.name}`}
-            onClick={() => {
-              this.props.dispatchUpdateHighScores(this.props.currentScore, this.state.input);
-            }}
-            type="button"
-          >
-            DONE!
-          </button>
+          {this.state.submited ? (
+            <button
+              className={`highscore-button start-button button-${this.props.currentTheme.name}`}
+              onClick={this.refreshPage}
+              type="button"
+            >
+              RESET
+            </button>
+          ) : (
+            <button
+              className={`highscore-button start-button button-${this.props.currentTheme.name}`}
+              onClick={this.submitHighScore}
+              type="button"
+            >
+              SUBMIT
+            </button>
+          )}
         </div>
       </div>
     );
@@ -63,7 +80,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateHighScores(currentScore, initials))
   };
 };
-
+//TODO: ADD RESET BUTTON
 const mapStateToProps = state => {
   return {
     currentTheme: state.currentTheme,

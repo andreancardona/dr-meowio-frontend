@@ -22,7 +22,6 @@ const defaultState = {
     background: 'powBackground'
   },
   gameOver: false,
-  // gameOver: true, //for testing
   highScores: []
 };
 
