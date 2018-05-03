@@ -8,7 +8,7 @@
 # Demo
 
 ![Dr. Meowio](screengrab.png)
-[Watch Demo on Youtube](https://www.youtube.com/watch?v=https://youtu.be/Dc_FGiS7ZEU)
+[Watch Demo on Youtube](https://www.youtube.com/watch?v=Dc_FGiS7ZEU&t)
 
 # How To Play
 
