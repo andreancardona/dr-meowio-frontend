@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { setTheme } from '../actions/actions';
 
 const ThemeSelector = props => {
-  // const handleSelect
-
   return (
     <div className="theme-panel">
       <h2 className="theme-label">CHOOSE THEME</h2>

@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Rammetto+One');
 @import url('https://fonts.googleapis.com/css?family=Hind');
 
+* {
+  box-sizing: border-box;
+}
+
 h2 {
   font-size: 20px;
 }
@@ -18,7 +22,7 @@ body {
   grid-template-rows: [a] 165px [b] 423px [c] 77px [d] 70px [e] 94px [f] 10px [end];
 
   /* Responsize Grid Sizes */
-  /* grid-template-columns: [one] 7% [two] 17% [three] 5% [four] 4% [five] 13% [six] 5% [seven] 49%x [end];
+  /* grid-template-columns: [one] 7% [two] 17% [three] 5% [four] 4% [five] 13% [six] 5% [seven] 49% [end];
   grid-template-rows: [a] 18% [b] 47% [c] 9% [d] 8% [e] 10% [f] 8% [end]; */
 }
 

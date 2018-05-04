@@ -373,7 +373,7 @@ class Bottle extends React.Component {
     if (spawnTile.status) {
       this.props.dispatchGameOver();
       // this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
-      // console.log('GAMEOVER!');
+      console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
     }

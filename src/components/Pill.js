@@ -2,6 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Pill extends React.Component {
+  componentDidMount() {
+    this.props.setColor();
+    this.pill.focus();
+    this.timer();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.tick);
+  }
+
   handleKeyPress = event => {
     event.preventDefault();
     if (!this.props.gameOver) {
@@ -15,16 +25,6 @@ class Pill extends React.Component {
     }
   };
 
-  componentDidMount() {
-    this.props.setColor();
-    this.pill.focus();
-    this.timer();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.tick);
-  }
-  //TODO: This interval is still not finishing correctly.
   timer = () => {
     this.moveDown();
     clearTimeout(this.tick);
