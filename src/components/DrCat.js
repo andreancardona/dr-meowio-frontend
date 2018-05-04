@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const DrCat = props => {
   return (
@@ -8,4 +9,8 @@ const DrCat = props => {
   );
 };
 
-export default DrCat;
+const mapStateToProps = state => {
+  return { currentTheme: state.currentTheme };
+};
+
+export default connect(mapStateToProps)(DrCat);

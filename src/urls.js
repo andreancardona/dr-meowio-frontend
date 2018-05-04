@@ -1,7 +1,6 @@
 const URLS = {
-  themes: 'http://localhost:3000/themes',
-  levels: 'http://localhost:3000/levels',
-  users: 'http://localhost:3000/users'
+  themes: 'http://localhost:3000/themes/',
+  highscores: 'http://localhost:3000/highscores'
 };
 
 // const URLS = {

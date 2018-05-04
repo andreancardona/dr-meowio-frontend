@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import GameContainer from './containers/GameContainer';
+import HighScoreContainer from './containers/HighScoreContainer';
 
 class App extends Component {
   render() {
-    return <GameContainer />;
+    return this.props.gameOver ? <HighScoreContainer /> : <GameContainer />;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { gameOver: state.gameOver };
+};
+
+export default connect(mapStateToProps)(App);

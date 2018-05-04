@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addPoints, setLevel, updateHighScores, gameOver } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 
@@ -6,7 +8,6 @@ class Bottle extends React.Component {
   state = {
     activePillColor: '',
     activePillPosition: 'a4',
-    gameOver: false,
     gameBoard: [
       [
         // a
@@ -187,28 +188,30 @@ class Bottle extends React.Component {
     ]
   };
 
-  rowNames = (() => {
-    return ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-  })();
+  rowNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
 
   rowIndex = letter => this.rowNames.indexOf(letter);
 
+  setColorArray = () => {
+    const colorArray = [];
+    colorArray.push(this.props.currentTheme.colorOne);
+    colorArray.push(this.props.currentTheme.colorTwo);
+    colorArray.push(this.props.currentTheme.colorThree);
+    colorArray.push(this.props.currentTheme.colorFour);
+    return colorArray;
+  };
+
   setColor = () => {
-    const activePillColor = this.props.colorArray[
-      Math.floor(Math.random() * this.props.colorArray.length)
-    ];
+    const colorArray = this.setColorArray();
+    const activePillColor = colorArray[Math.floor(Math.random() * colorArray.length)];
     this.setState({ activePillColor: activePillColor });
   };
 
   makeActivePill = () => {
     return (
       <Pill
-        currentLevel={this.props.currentLevel}
-        currentScore={this.props.currentScore}
         setColor={this.setColor}
-        toggleActive={this.toggleActive}
         stopPill={this.stopPill}
-        gameOver={this.state.gameOver}
         color={this.state.activePillColor}
         gameBoard={this.state.gameBoard}
         updateActivePillPosition={this.updateActivePillPosition}
@@ -239,64 +242,46 @@ class Bottle extends React.Component {
       this.removeTile(oneBelow);
       this.removeTile(oneAbove);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneBelow.color === activeColor && twoBelow.color === activeColor) {
       this.removeTile(oneBelow);
       this.removeTile(twoBelow);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneAbove.color === activeColor && twoAbove.color === activeColor) {
       this.removeTile(oneAbove);
       this.removeTile(twoAbove);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneLeft.color === activeColor && oneRight.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(oneRight);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneLeft.color === activeColor && twoLeft.color === activeColor) {
       this.removeTile(oneLeft);
       this.removeTile(twoLeft);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     } else if (oneRight.color === activeColor && twoRight.color === activeColor) {
       this.removeTile(oneRight);
       this.removeTile(twoRight);
       this.removeTile(currentTile);
-      this.props.addPoints();
-      this.props.setLevel();
+      this.props.dispatchAddPoints();
+      this.props.dispatchSetLevel(this.props.currentScore);
     }
   };
 
   handleMatch = positionArray => {
     this.match(positionArray);
-    this.props.addPoints();
-    this.props.setLevel();
+    this.props.dispatchAddPoints();
+    this.props.dispatchSetLevel(this.props.currentScore);
   };
-
-  // shiftDown = () => {
-  //   const newGameBoard = [...this.state.gameBoard];
-  //   newGameBoard.forEach(row =>
-  //     row.forEach(tile => {
-  //       let belowTile = this.findTileBelow(1);
-  //       if (!belowTile.status && tile.position !== 'a4') {
-  //         const rowBelow = belowTile.position.split('')[0];
-  //         const colBelow = belowTile.position.split('')[1];
-  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].status = tile.status;
-  //         newGameBoard[this.rowIndex(rowBelow)][colBelow - 1].color = tile.color;
-  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].status = null;
-  //         newGameBoard[this.rowIndex(rowBelow) - 1][colBelow - 1].color = null;
-  //       }
-  //     })
-  //   );
-  //   this.setState({ gameBoard: newGameBoard });
-  // };
 
   removeTile = tile => {
     tile.color = null;
@@ -308,7 +293,7 @@ class Bottle extends React.Component {
     const column = parseInt(positionArray[1], 10);
     newGameBoard[rowIdx][column - 1] = tile;
     this.setState({ gameBoard: newGameBoard });
-    // this.shiftDown();
+    // TODO:  add function to shift all tiles down to fill gaps
   };
 
   findTile = position => {
@@ -386,20 +371,20 @@ class Bottle extends React.Component {
     //Handle End of Game
     const spawnTile = newGameBoard[0][3];
     if (spawnTile.status) {
-      this.setState({ gameOver: true });
-      this.props.updateHiScore();
+      this.props.dispatchGameOver();
+      // this.props.dispatchUpdateHighScores(this.props.currentScore, this.props.initials);
       console.log('GAMEOVER!');
     } else {
       this.setState({ activePillPosition: 'a4', gameBoard: newGameBoard }, this.setColor());
     }
   };
 
-  gameBoardClass = () => (this.state.gameOver ? 'bottle pillgrid game-over' : 'bottle pillgrid');
+  gameBoardClass = () => (this.props.gameOver ? 'bottle pillgrid game-over' : 'bottle pillgrid');
 
   generateGameBoard = () => {
     return (
       <div className={this.gameBoardClass()}>
-        {this.state.gameOver
+        {this.props.gameOver
           ? null
           : this.state.gameBoard.map(row =>
               row.map(cellObj => {
@@ -421,4 +406,22 @@ class Bottle extends React.Component {
     return this.generateGameBoard();
   }
 }
-export default Bottle;
+
+const mapStateToProps = state => {
+  return {
+    currentTheme: state.currentTheme,
+    currentScore: state.currentScore,
+    active: state.active,
+    gameOver: state.gameOver
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchAddPoints: () => dispatch(addPoints()),
+    dispatchSetLevel: currentScore => dispatch(setLevel(currentScore)),
+    dispatchGameOver: () => dispatch(gameOver())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Bottle);

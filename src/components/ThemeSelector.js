@@ -1,23 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setTheme } from '../actions/actions';
 
 const ThemeSelector = props => {
-  // const handleSelect
-
   return (
     <div className="theme-panel">
       <h2 className="theme-label">CHOOSE THEME</h2>
-      <select className="theme-input" onChange={event => props.setTheme(event.target.value)}>
-        <option value="Pow">Pow</option>
-        <option value="Baby">Baby</option>
-        <option value="Glam">Glam</option>
-        <option value="Mod">Mod</option>
-        <option value="Pickle">Pickle</option>
-        <option value="Grape">Grape</option>
-        <option value="VitaminC">Vitamin C</option>
-        <option value="Berry">Berry</option>
+      <select
+        className="theme-input"
+        onChange={event => props.dispatchSetTheme(event.target.value)}
+      >
+        <option value="1">Pow</option>
+        <option value="2">Baby</option>
+        <option value="8">Glam</option>
+        <option value="7">Mod</option>
+        <option value="6">Pickle</option>
+        <option value="5">Grape</option>
+        <option value="3">Vitamin C</option>
+        <option value="4">Berry</option>
       </select>
     </div>
   );
 };
 
-export default ThemeSelector;
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchSetTheme: themeId => dispatch(setTheme(themeId))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ThemeSelector);

@@ -1,6 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Pill extends React.Component {
+  componentDidMount() {
+    this.props.setColor();
+    this.pill.focus();
+    this.timer();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.tick);
+  }
+
   handleKeyPress = event => {
     event.preventDefault();
     if (!this.props.gameOver) {
@@ -14,31 +25,11 @@ class Pill extends React.Component {
     }
   };
 
-  componentDidMount() {
-    this.props.setColor();
-    this.pill.focus();
-
-    //handle speed changes based on level
-    var interval = 1000;
-    const timer = () => {
-      interval = this.setPillSpeed();
-      this.moveDown();
-      if (interval >= 50) {
-        this.timeOut = setTimeout(timer, interval);
-      }
-    };
-    if (this.props.gameOver === true) {
-      clearTimeout(this.timeOut);
-    } else {
-      timer();
-    }
-  }
-
-  componentWillReceiveProps() {
-    if (this.props.gameOver === true) {
-      clearTimeout(this.timeOut);
-    }
-  }
+  timer = () => {
+    this.moveDown();
+    clearTimeout(this.tick);
+    this.tick = setTimeout(this.timer, this.setPillSpeed());
+  };
 
   setPillSpeed = () => {
     switch (this.props.currentLevel) {
@@ -108,4 +99,12 @@ class Pill extends React.Component {
   }
 }
 
-export default Pill;
+const mapStateToProps = state => {
+  return {
+    gameOver: state.gameOver,
+    currentLevel: state.currentLevel,
+    currentScore: state.currentScore
+  };
+};
+
+export default connect(mapStateToProps)(Pill);
