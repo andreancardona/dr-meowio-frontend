@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPoints, setLevel, updateHighScores, gameOver } from '../actions/actions';
+import { addPoints, setLevel, gameOver } from '../actions/actions';
 import Pill from '../components/Pill.js';
 import StaticPill from '../components/StaticPill.js';
 

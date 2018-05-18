@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setInitials, updateHighScores, getHighScores } from '../actions/actions';
+import { updateHighScores, getHighScores } from '../actions/actions';
 
 class HighScoreContainer extends Component {
   state = {

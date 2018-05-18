@@ -6,7 +6,6 @@ import Bottle from './Bottle';
 import DrCat from '../components/DrCat';
 import Header from '../components/Header';
 import ThemeSelector from '../components/ThemeSelector';
-import URLS from '../urls';
 
 const GameContainer = props => {
   return (

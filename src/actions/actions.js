@@ -1,6 +1,5 @@
 import ThemeAPI from '../services/themeAPI.js';
 import HighScoreAPI from '../services/highscoreAPI.js';
-import UserAPI from '../services/userAPI.js';
 
 export const SET_THEME = 'SET_THEME';
 export const TOGGLE_ACTIVE = 'TOGGLE_ACTIVE';
