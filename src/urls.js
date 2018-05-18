@@ -1,12 +1,11 @@
 const URLS = {
-  themes: 'http://localhost:3000/themes/',
-  highscores: 'http://localhost:3000/highscores'
+  themes: ' https://dr-meowio-backend.herokuapp.com/themes/',
+  highscores: ' https://dr-meowio-backend.herokuapp.com/highscores'
 };
 
 // const URLS = {
-//   themes: 'https://young-ridge-15090.herokuapp.com/themes',
-//   levels: 'https://young-ridge-15090.herokuapp.com/levels',
-//   users: 'https://young-ridge-15090.herokuapp.com/users'
+//   themes: 'http://localhost:3000/themes/',
+//   highscores: 'http://localhost:3000/highscores'
 // };
 
 export default URLS;
