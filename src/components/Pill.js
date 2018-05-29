@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class Pill extends React.Component {
+  tick = null;
+
   componentDidMount() {
     this.props.setColor();
     this.pill.focus();
